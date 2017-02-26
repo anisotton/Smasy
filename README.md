@@ -2,7 +2,7 @@
 
 ## Please note: It is **work in progress**
 
-- ☐ Framework CodeIgniter
+- ✔ Framework CodeIgniter
 - ☐ HTML layout
 - ☐ Structure MVC
 - ☐ Financial Module
