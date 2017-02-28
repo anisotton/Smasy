@@ -1,4 +1,4 @@
-# Dasmasy - Dance School Management System 
+# Smasy - School Management System 
 
 ## Please note: It is **work in progress**
 
@@ -13,6 +13,6 @@
 
 ===========================================
 
-Open source manager for dance schools
+Open source manager for schools
 
-Use Dasmasy to manage your classes and students
+Use Smasy to manage your classes and students
