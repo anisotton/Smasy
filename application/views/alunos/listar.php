@@ -1,5 +1,39 @@
-<div class="row-fluid" style="margin-top: 0">
-    <div class="span12">
-        <strong>Listar Alunos</strong>
+<a href="<?php echo base_url();?>alunos/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Novo Aluno</a>
+<div class="widget-box">
+    <div class="widget-title">
+            <span class="icon">
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+            </span>
+        <h5>Alunos</h5>
+    </div>
+    <div class="widget-content nopadding">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Celular</th>
+                <th>Email</th>
+                <th>Responsavel</th>
+            </tr>
+            </thead>
+            <tbody>
+                <?php if(count($alunos)>0):
+                    foreach ($alunos as $aluno):?>
+                        <tr class="row-clickable" data-link="<?php echo base_url()."alunos/edit/{$aluno->id}";?>">
+                            <td><?php echo $aluno->nome;?></a></td>
+                            <td><?php echo $aluno->tel_fixo;?></td>
+                            <td><?php echo $aluno->tel_celular;?></td>
+                            <td><?php echo $aluno->email;?></td>
+                            <td><?php echo 'aaa'?></td>
+                        </tr>
+                    <?php endforeach;?>
+                <?php else:?>
+                    <tr>
+                        <td colspan="5">Nenhum Aluno Cadastrado</td>
+                    </tr>
+                <?php endif;?>
+            </tbody>
+        </table>
     </div>
 </div>

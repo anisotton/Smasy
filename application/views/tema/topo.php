@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<title>Smacy</title>
+<title>Smasy<?php echo ($this->uri->segment(1))?" - ".ucfirst($this->uri->segment(1)):''; ?></title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
@@ -11,9 +11,8 @@
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/matrix-media.css" />
 <link href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/fullcalendar.css" /> 
-
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-<script type="text/javascript"  src="<?php echo base_url();?>assets/js/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/smasy.css" />
 
 </head>
 <body>
@@ -99,9 +98,10 @@
 </div>
 <!--end-Footer-part-->
 
-
-<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script> 
-<script src="<?php echo base_url();?>assets/js/matrix.js"></script> 
+<script type="text/javascript"  src="<?php echo base_url();?>assets/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/matrix.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/smasy.js"></script>
 
 
 </body>
