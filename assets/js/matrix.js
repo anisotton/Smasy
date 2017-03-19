@@ -1,8 +1,5 @@
 
 $(document).ready(function(){
-
-	
-	
 	// === Sidebar navigation === //
 	
 	$('.submenu > a').click(function(e)
@@ -91,10 +88,10 @@ $(document).ready(function(){
 	$('.tip-bottom').tooltip({ placement: 'bottom' });	
 	
 	// === Search input typeahead === //
-	//$('#search input[type=text]').typeahead({
-		//source: ['Dashboard','Form elements','Common Elements','Validation','Wizard','Buttons','Icons','Interface elements','Support','Calendar','Gallery','Reports','Charts','Graphs','Widgets'],
-		//items: 4
-	//});
+	$('#search input[type=text]').typeahead({
+		source: ['Dashboard','Form elements','Common Elements','Validation','Wizard','Buttons','Icons','Interface elements','Support','Calendar','Gallery','Reports','Charts','Graphs','Widgets'],
+		items: 4
+	});
 	
 	// === Fixes the position of buttons group in content header and top user navigation === //
 	function fix_position()
@@ -158,7 +155,7 @@ $(document).ready(function(){
 	});
 	
 
-	$('#lightbox').click(function() {
+	$('#lightbox').live('click', function() { 
 		$('#lightbox').hide(200);
 	});
 	

@@ -1,0 +1,9 @@
+tr.row-clickable{
+    cursor: pointer;
+}
+
+ul.ui-autocomplete li{
+    padding:0px 5px;
+}
+.nav-tabs li.disabled { color: grey; }
+.nav-tabs li.disabled a:hover { border-color: transparent; }

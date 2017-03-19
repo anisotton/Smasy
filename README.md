@@ -3,10 +3,14 @@
 ## Please note: It is **work in progress**
 
 - ✔ Framework CodeIgniter
-- ✔ HTML layout
 - ✔ Structure MVC
+- ✔ HTML layout - Matrix Admin
+- ✔ HTML layout - Adapt to CodeIgniter
+- ✔ HTML layout - Update BootsTrap/jQuery
 - ☐ Users Module
+- ☐ ACL
 - ☐ Student Module
+- ☐ Responsible Module
 - ☐ Class Module
 - ☐ Modalities Module
 - ☐ Financial Module
