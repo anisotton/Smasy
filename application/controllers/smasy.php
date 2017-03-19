@@ -6,12 +6,12 @@ class Smasy extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('smasy_model','',TRUE);
-        $this->data['menuPainel'] = 'Painel';
+        $this->data['activeMenu'] = 'home';
     }
 
     public function index()
     {
         $this->data['view'] = 'smasy/painel';
-        $this->load->view('tema/topo',  $this->data);
+        $this->load->view('layout/index',  $this->data);
     }
 }

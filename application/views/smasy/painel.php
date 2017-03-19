@@ -1,14 +1,14 @@
 <!--Action boxes-->
-<div class="container-fluid">
-    <div class="quick-actions_homepage">
-        <ul class="quick-actions">
-            <li class="bg_lb"> <a href="<?php echo base_url()?>alunos"> <i class="fa fa-graduation-cap" aria-hidden="true"></i><br /> Alunos</a> </li>
-            <li class="bg_lg"> <a href="<?php echo base_url()?>turmas"> <i class="fa fa-book" aria-hidden="true"></i><br /> Turmas</a> </li>
-            <li class="bg_ly"> <a href="<?php echo base_url()?>modalidades"> <i class="fa fa-tags" aria-hidden="true"></i><br /> Modalidades</a> </li>
-        </ul>
-    </div>
+
+<div class="quick-actions_homepage">
+    <ul class="quick-actions">
+        <li class="bg_lb"> <a href="<?php echo base_url()?>alunos"> <i class="fa fa-graduation-cap" aria-hidden="true"></i><br /> Alunos</a> </li>
+        <li class="bg_lg"> <a href="<?php echo base_url()?>turmas"> <i class="fa fa-book" aria-hidden="true"></i><br /> Turmas</a> </li>
+        <li class="bg_ly"> <a href="<?php echo base_url()?>modalidades"> <i class="fa fa-tags" aria-hidden="true"></i><br /> Modalidades</a> </li>
+    </ul>
 </div>
-<!--End-Action boxes-->
+<!--Action boxes-->
+    <!--End-Action boxes-->
 <div class="row-fluid" style="margin-top: 0">
     <div class="span12">
         <div class="widget-box">

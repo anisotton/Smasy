@@ -1,4 +1,6 @@
-<a href="<?php echo base_url();?>alunos/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Novo Aluno</a>
+<div class="row-fluid">
+    <a href="<?php echo base_url();?>alunos/adicionar" class="btn btn-success pull-right"><i class="icon-plus icon-white"></i> Novo Aluno</a>
+</div>
 <div class="widget-box">
     <div class="widget-title">
             <span class="icon">
@@ -25,7 +27,7 @@
                             <td><?php echo $aluno->tel_fixo;?></td>
                             <td><?php echo $aluno->tel_celular;?></td>
                             <td><?php echo $aluno->email;?></td>
-                            <td><?php echo 'aaa'?></td>
+                            <td><?php echo $aluno->responsavel;?></td>
                         </tr>
                     <?php endforeach;?>
                 <?php else:?>

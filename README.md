@@ -9,8 +9,8 @@
 - ✔ HTML layout - Update BootsTrap/jQuery
 - ☐ Users Module
 - ☐ ACL
-- ☐ Student Module
-- ☐ Responsible Module
+- ✔ Student Module
+- ✔ Responsible Module
 - ☐ Class Module
 - ☐ Modalities Module
 - ☐ Financial Module

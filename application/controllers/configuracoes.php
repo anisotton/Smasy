@@ -6,12 +6,12 @@ class Configuracoes extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('config_model','',TRUE);
-        $this->data['menuConfig'] = 'config';
+        $this->data['activeMenu'] = 'config';
     }
 
     public function index()
     {
         $this->data['view'] = 'configuracoes/painel';
-        $this->load->view('tema/topo',  $this->data);
+        $this->load->view('layout/index',  $this->data);
     }
 }

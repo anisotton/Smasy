@@ -12,20 +12,34 @@
  */
 class Alunos_model extends CI_Model {
 
-    private $table = 'alunos';
+    private $table = 'smasy_alunos';
 
     private $primaryKey = 'id';
 
-    public function __construct() {
-        parent::__construct();
-    }
-
     public function getList($offset = '', $limit = ''){
-        return $this->db->select('id,nome,tel_celular,tel_fixo,email')->get($this->table, $offset, $limit)->result();
+
+        return
+            $this->db
+                ->select("{$this->table}.id,
+                      {$this->table}.nome,
+                      IFNULL({$this->table}.tel_celular,smasy_responsaveis.tel_celular) AS tel_celular,
+                      IFNULL({$this->table}.tel_fixo,smasy_responsaveis.tel_fixo) AS tel_fixo,
+                      IFNULL({$this->table}.email,smasy_responsaveis.email) AS email,
+                      {$this->table}.id_responsavel,
+                       IFNULL(smasy_responsaveis.nome, '-') AS responsavel")
+                ->join('smasy_responsaveis',$this->table.'.id_responsavel = smasy_responsaveis.id','left')
+                ->order_by("{$this->table}.nome")
+                ->get($this->table, $offset, $limit)
+                ->result();
     }
 
     public function get($id){
-        return $this->db->get($this->table,array('id' => $id))->row();
+        return $this->db
+            ->select($this->table.'.*, smasy_responsaveis.nome AS responsavel')
+            ->where("{$this->table}.{$this->primaryKey}",$id)
+            ->join('smasy_responsaveis',$this->table.'.id_responsavel = smasy_responsaveis.id','left')
+            ->get($this->table)
+            ->row();
     }
 
     public function update($data){
