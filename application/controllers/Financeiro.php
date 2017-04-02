@@ -15,4 +15,12 @@ class Financeiro extends CI_Controller {
         $this->data['view'] = 'financeiro/painel';
         $this->load->view('layout/index',  $this->data);
     }
+
+
+    public function contratos()
+    {
+        $this->data['activeSubMenu'] = 'contratos';
+        $this->data['view'] = 'financeiro/contratos';
+        $this->load->view('layout/index',  $this->data);
+    }
 }

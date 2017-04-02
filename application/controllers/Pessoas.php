@@ -89,8 +89,5 @@ class Pessoas extends SY_controller {
             $this->edit($this->data['pessoa']['codigo']);
         }
 
-        //$this->data['view'] = 'pessoas/pessoa';
-
-        //$this->load->view('layout/index',  $this->data);
     }
 }

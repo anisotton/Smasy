@@ -28,6 +28,19 @@ $config = array(
                                 'rules'=>'required|trim'
                             ),
                         ),
+                'contrato' =>
+                    array(
+                        array(
+                            'field'=>'nome',
+                            'label'=>'Nome',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'tipo',
+                            'label'=>'Tipo',
+                            'rules'=>'required|trim'
+                        ),
+                    ),
                 'alunoMenor' =>
                         array(
                             array(

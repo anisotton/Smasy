@@ -12,7 +12,7 @@
                     <?php if (isset($custom_error)):?>
                         <div class="alert alert-danger"><?php echo $custom_error;?></div>
                     <?php endif ?>
-                    <form action="<?php echo base_url()?>alunos/save" id="formAluno" method="post" class="form-horizontal" >
+                    <form action="<?php echo base_url()?>alunos/save" enctype="multipart/form-data" method="post" accept-charset="utf-8" id="formAluno" class="form-horizontal" >
                         <input value="<?php echo $aluno['ra'];?>" name="ra" type="hidden" />
                         <input value="<?php echo $aluno['codpessoa'];?>" name="codpessoa" type="hidden" />
                         <div class="span2">
