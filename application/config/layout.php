@@ -63,6 +63,17 @@ $config = array(
                 ),
             ),
         ),
+        'professores' => array(
+            'label' => 'Professores',
+            'href' => base_url().'professores',
+            'icon' => 'fa-address-book',
+            'submenu' => array(
+                'lista' => array(
+                    'label' => 'Lista',
+                    'href' => base_url().'professores',
+                ),
+            ),
+        ),
         'turmas' => array(
             'label' => 'Turmas',
             'href' => base_url().'turmas',
@@ -81,6 +92,10 @@ $config = array(
                 'painel' => array(
                     'label' => 'Painel',
                     'href' => base_url().'financeiro',
+                ),
+                'contratos' => array(
+                    'label' => 'Contratos',
+                    'href' => base_url().'contratos',
                 ),
                 'lancamentos' => array(
                     'label' => 'Lançamentos',

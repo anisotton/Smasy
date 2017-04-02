@@ -12,7 +12,7 @@
                     <?php if (isset($custom_error)):?>
                         <div class="alert alert-danger"><?php echo $custom_error;?></div>
                     <?php endif ?>
-                    <form action="<?php echo base_url()?>pessoas/save" id="formPessoa" method="post" class="form-horizontal" >
+                    <form action="<?php echo base_url()?>pessoas/save" id="formPessoa" enctype="multipart/form-data" method="post" accept-charset="utf-8" class="form-horizontal" >
                         <input value="<?php echo $pessoa['codigo'];?>" name="codigo" type="hidden" />
                         <div class="span2">
                             <ul class="thumbnails" style="margin: 0px">

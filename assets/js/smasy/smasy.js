@@ -16,10 +16,16 @@ jQuery(document).ready(function(){
     jQuery(".mask-date").mask("99/99/9999");
     jQuery(".mask-cep").mask("99999-999");
 
+    jQuery('tr.row-clickable td.no-clickable').click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    });
     jQuery('tr.row-clickable').click(function () {
         var url = jQuery(this).attr('data-link');
         window.location = url;
     });
+
+
     jQuery('input[type=checkbox],input[type=radio],input[type=file]').uniform();
 
     jQuery('.nav-tabs a').on('click',function (e) {

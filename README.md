@@ -9,11 +9,14 @@
 - ✔ HTML layout - Update BootsTrap/jQuery
 - ☐ Users Module
 - ☐ ACL
-- ✔ Student Module
 - ✔ People Module
+- ✔ Student Module
+- ☐ Teacher Module
 - ☐ Class Module
 - ☐ Modalities Module
 - ☐ Financial Module
+    - ✔ Contracts Module
+    - ☐ Launcheses Module
 - ☐ Reports Module
 - ☐ Config Module
 - ☐ Alpha version
