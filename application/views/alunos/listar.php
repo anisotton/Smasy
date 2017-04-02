@@ -1,5 +1,5 @@
 <div class="row-fluid">
-    <a href="<?php echo base_url();?>alunos/adicionar" class="btn btn-success pull-right"><i class="icon-plus icon-white"></i> Novo Aluno</a>
+    <a href="<?php echo base_url();?>alunos/adicionar" class="btn btn-success pull-right"><i class="icon-plus icon-white"></i> Adicionar</a>
 </div>
 <div class="widget-box">
     <div class="widget-title">
@@ -13,19 +13,22 @@
             <thead>
             <tr>
                 <th>Nome</th>
-                <th>Telefone</th>
-                <th>Celular</th>
+                <th>Telefones</th>
                 <th>Email</th>
                 <th>Responsavel</th>
             </tr>
             </thead>
             <tbody>
                 <?php if(count($alunos)>0):
-                    foreach ($alunos as $aluno):?>
-                        <tr class="row-clickable" data-link="<?php echo base_url()."alunos/edit/{$aluno->id}";?>">
+                    foreach ($alunos as $aluno):
+                        $telefones = array();
+                        $telefones[] = $aluno->telefone1;
+                        $telefones[] = $aluno->telefone2;
+                        $telefones[] = $aluno->telefone3;
+                        ?>
+                        <tr class="row-clickable" data-link="<?php echo base_url()."alunos/edit/{$aluno->ra}";?>">
                             <td><?php echo $aluno->nome;?></a></td>
-                            <td><?php echo $aluno->tel_fixo;?></td>
-                            <td><?php echo $aluno->tel_celular;?></td>
+                            <td><?php echo implode('|',array_filter($telefones));?></td>
                             <td><?php echo $aluno->email;?></td>
                             <td><?php echo $aluno->responsavel;?></td>
                         </tr>

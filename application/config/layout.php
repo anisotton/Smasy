@@ -15,7 +15,7 @@ $config = array(
         'stylesheets' => array('assets/css/uniform.css','assets/css/smasy/smasy.css'),
         'charset' => 'UTF-8',
         'favicon' => 'assets/img/favicon.ico',
-        'scripts' => array('assets/js/jquery.uniform.js'),
+        'scripts' => array('assets/js/jquery.uniform.js','assets/js/masked.js'),
     ),
     'footer' => array(
         'title' => 'Smasy',
@@ -41,6 +41,17 @@ $config = array(
             'href' => base_url(),
             'icon' => 'fa-home',
         ),
+        'pessoas' => array(
+            'label' => 'Pessoas',
+            'href' => base_url().'pessoas',
+            'icon' => 'fa-users',
+            'submenu' => array(
+                'lista' => array(
+                    'label' => 'Lista',
+                    'href' => base_url().'pessoas',
+                ),
+            ),
+        ),
         'alunos' => array(
             'label' => 'Alunos',
             'href' => base_url().'alunos',
@@ -49,10 +60,6 @@ $config = array(
                 'lista' => array(
                     'label' => 'Lista',
                     'href' => base_url().'alunos',
-                ),
-                'responsavel' => array(
-                    'label' => 'Responsaveis',
-                    'href' => base_url().'responsaveis',
                 ),
             ),
         ),
