@@ -8,7 +8,7 @@ $config = array(
                                 'rules'=>'required|trim'
                             ),
                             array(
-                                'field'=>'dataNasc',
+                                'field'=>'dtnascimento',
                                 'label'=>'Data Nascimento',
                                 'rules'=>'required|trim'
                             ),
@@ -18,11 +18,6 @@ $config = array(
                                 'rules'=>'required|trim'
                             ),
                             array(
-                                'field'=>'rg',
-                                'label'=>'RG',
-                                'rules'=>'required|trim'
-                            ),
-                            array(
                                 'field'=>'sexo',
                                 'label'=>'Sexo',
                                 'rules'=>'required|trim'
@@ -31,26 +26,9 @@ $config = array(
                                 'field'=>'naturalidade',
                                 'label'=>'Naturalidade',
                                 'rules'=>'required|trim'
-                            ),array(
-                                'field'=>'nascionalidade',
-                                'label'=>'Nascionalidade',
-                                'rules'=>'required|trim'
-                            ),array(
-                                'field'=>'tel_fixo',
-                                'label'=>'Telefone fixo',
-                                'rules'=>'trim'
-                            ),array(
-                                'field'=>'tel_celular',
-                                'label'=>'Telefone celular',
-                                'rules'=>'trim'
-                            ),
-                            array(
-                                'field'=>'email',
-                                'label'=>'Email',
-                                'rules'=>'trim|valid_email'
                             ),
                         ),
-                 'alunoMenor' =>
+                'alunoMenor' =>
                         array(
                             array(
                                 'field'=>'nome',
@@ -58,7 +36,7 @@ $config = array(
                                 'rules'=>'required|trim'
                             ),
                             array(
-                                'field'=>'dataNasc',
+                                'field'=>'dtnascimento',
                                 'label'=>'Data Nascimento',
                                 'rules'=>'required|trim'
                             ),
@@ -70,11 +48,6 @@ $config = array(
                             array(
                                 'field'=>'naturalidade',
                                 'label'=>'Naturalidade',
-                                'rules'=>'required|trim'
-                            ),
-                            array(
-                                'field'=>'nascionalidade',
-                                'label'=>'Nascionalidade',
                                 'rules'=>'required|trim'
                             ),
                             array(
@@ -83,7 +56,7 @@ $config = array(
                                 'rules'=>'required|trim'
                             ),
                         ),
-                'responsaveis' =>
+                'pessoa' =>
                         array(
                             array(
                                 'field'=>'nome',
@@ -91,13 +64,8 @@ $config = array(
                                 'rules'=>'required|trim'
                             ),
                             array(
-                                'field'=>'cpf',
-                                'label'=>'CPF',
-                                'rules'=>'required|trim'
-                            ),
-                            array(
-                                'field'=>'rg',
-                                'label'=>'RG',
+                                'field'=>'dtnascimento',
+                                'label'=>'Data Nascimento',
                                 'rules'=>'required|trim'
                             ),
                             array(
@@ -106,19 +74,14 @@ $config = array(
                                 'rules'=>'required|trim'
                             ),
                             array(
-                                'field'=>'tel_fixo',
-                                'label'=>'Telefone fixo',
-                                'rules'=>'trim'
+                                'field'=>'cpf',
+                                'label'=>'CPF',
+                                'rules'=>'required|trim'
                             ),
                             array(
-                                'field'=>'tel_celular',
-                                'label'=>'Telefone celular',
-                                'rules'=>'trim'
-                            ),
-                            array(
-                                'field'=>'email',
-                                'label'=>'Email',
-                                'rules'=>'trim|valid_email'
+                                'field'=>'naturalidade',
+                                'label'=>'Naturalidade',
+                                'rules'=>'required|trim'
                             ),
                         ),
                 );

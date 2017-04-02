@@ -1,24 +1,26 @@
 jQuery(document).ready(function () {
 
-    jQuery('#dataNasc').on('change',function () {
+    jQuery('#dtnascimento').on('change',function () {
         if(jQuery(this).val()){
-            var birthDate = jQuery('#dataNasc').val();
+            var birthDate = jQuery('#dtnascimento').val();
             if(getAge(birthDate) >= 18){
                 jQuery('#maiorIdade').removeClass('hidden');
                 jQuery('#menorIdade').addClass('hidden');
                 jQuery('#tabEndereco').removeClass('disabled');
+                jQuery('#tabDocumentos').removeClass('disabled');
 
             }else{
                 jQuery('#menorIdade').removeClass('hidden');
                 jQuery('#maiorIdade').addClass('hidden');
                 jQuery('#tabEndereco').addClass('disabled');
+                jQuery('#tabDocumentos').addClass('disabled');
             }
         }
     });
     jQuery("#responsavel").autocomplete({
         source: function(request, response) {
                 jQuery.ajax( {
-                    url: smasy.getBase()+"responsaveis/autoCompleteResp/"+request.term,
+                    url: smasy.getBase()+"alunos/buscaRespAutocomplete/"+request.term,
                     dataType: "json",
                     success: function( data ) {
                         response( data );
@@ -30,20 +32,10 @@ jQuery(document).ready(function () {
             $("#responsavel_id").val(ui.item.id);
         }
     });
-
-    jQuery('#btAddResponsavel').click(function () {
-        jQuery.ajax({
-            type: "POST",
-            url:smasy.getBase()+"responsaveis/adicionar/true",
-            success: function (html) {
-                jQuery('#addResponsavel').find('.modal-body').html(html);
-            },
-        });
+    jQuery('#btAddResponsavel').click(function (e) {
+        e.preventDefault();
+        window.open(smasy.getBase()+"pessoas/adicionar",'Adicionar pessoa');
     });
-});
-
-jQuery(document).ready(function(){
-
 });
 
 function getAge(dataNascimento) {

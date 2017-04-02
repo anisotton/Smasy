@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Class Pessoa_model
+ */
+class Pessoa_model extends SY_Model {
+
+    /**
+     * @var string
+     */
+    protected $table = 'smasy_pessoa';
+
+    /**
+     * @var string
+     */
+    protected $colOrder = 'nome';
+
+    /**
+     * @var string
+     */
+    protected $primaryKey = 'codigo';
+
+}

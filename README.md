@@ -10,7 +10,7 @@
 - ☐ Users Module
 - ☐ ACL
 - ✔ Student Module
-- ✔ Responsible Module
+- ✔ People Module
 - ☐ Class Module
 - ☐ Modalities Module
 - ☐ Financial Module
