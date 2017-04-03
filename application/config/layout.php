@@ -45,34 +45,16 @@ $config = array(
             'label' => 'Pessoas',
             'href' => base_url().'pessoas',
             'icon' => 'fa-users',
-            'submenu' => array(
-                'lista' => array(
-                    'label' => 'Lista',
-                    'href' => base_url().'pessoas',
-                ),
-            ),
         ),
         'alunos' => array(
             'label' => 'Alunos',
             'href' => base_url().'alunos',
             'icon' => 'fa-graduation-cap',
-            'submenu' => array(
-                'lista' => array(
-                    'label' => 'Lista',
-                    'href' => base_url().'alunos',
-                ),
-            ),
         ),
         'professores' => array(
             'label' => 'Professores',
             'href' => base_url().'professores',
             'icon' => 'fa-address-book',
-            'submenu' => array(
-                'lista' => array(
-                    'label' => 'Lista',
-                    'href' => base_url().'professores',
-                ),
-            ),
         ),
         'turmas' => array(
             'label' => 'Turmas',

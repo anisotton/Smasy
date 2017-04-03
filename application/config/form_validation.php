@@ -97,5 +97,38 @@ $config = array(
                                 'rules'=>'required|trim'
                             ),
                         ),
+                'professor' =>
+                    array(
+                        array(
+                            'field'=>'nome',
+                            'label'=>'Nome',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'dtnascimento',
+                            'label'=>'Data Nascimento',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'cpf',
+                            'label'=>'CPF',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'sexo',
+                            'label'=>'Sexo',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'naturalidade',
+                            'label'=>'Naturalidade',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'contrato',
+                            'label'=>'Contrato',
+                            'rules'=>'required|trim'
+                        ),
+                    ),
                 );
 			   
