@@ -1,5 +1,5 @@
 <?php
-class Modalidades_model extends SY_Model {
+class Faixaetarias_model extends SY_Model {
 
     /**
      * @var string

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class Pessoa_model
+ * Class Contratos_model
  */
 class Contratos_model extends SY_Model {
 

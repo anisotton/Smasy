@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Modalidades extends SY_Controller {
+class Faixaetarias extends SY_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -13,13 +13,13 @@ class Modalidades extends SY_Controller {
 
     public function index()
     {
-        $this->data['view'] = 'turmas/modalidades/listar';
+        $this->data['view'] = 'modalidades/listar';
         $this->data['dados'] = $this->model->getList();
         $this->load->view('layout/index',  $this->data);
     }
 
     private function modalidade(){
-        $this->data['view'] = 'turmas/modalidades/modalidade';
+        $this->data['view'] = 'modalidades/modalidade';
 
         $this->load->view('layout/index', $this->data);
     }

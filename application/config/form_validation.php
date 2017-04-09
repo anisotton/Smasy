@@ -130,5 +130,36 @@ $config = array(
                             'rules'=>'required|trim'
                         ),
                     ),
+                'modalidade' =>
+                    array(
+                        array(
+                            'field'=>'nome',
+                            'label'=>'Nome',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'valor',
+                            'label'=>'Valor',
+                            'rules'=>'required|trim'
+                        ),
+                    ),
+                'horario' =>
+                    array(
+                        array(
+                            'field'=>'nome',
+                            'label'=>'Nome',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'horaini',
+                            'label'=>'Hora inicial',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'horafim',
+                            'label'=>'Hora final',
+                            'rules'=>'required|trim'
+                        ),
+                    ),
                 );
 			   

@@ -15,6 +15,8 @@ jQuery(document).ready(function(){
     jQuery(".mask-cpf").mask("999.999.999-99");
     jQuery(".mask-date").mask("99/99/9999");
     jQuery(".mask-cep").mask("99999-999");
+    jQuery('.mask-money').mask('#.##9,99', {reverse: true});
+    jQuery('.mask-hour').mask('00:00');
 
     jQuery('tr.row-clickable td.no-clickable').click(function (e) {
         e.preventDefault();

@@ -15,7 +15,7 @@ $config = array(
         'stylesheets' => array('assets/css/uniform.css','assets/css/smasy/smasy.css'),
         'charset' => 'UTF-8',
         'favicon' => 'assets/img/favicon.ico',
-        'scripts' => array('assets/js/jquery.uniform.js','assets/js/masked.js'),
+        'scripts' => array('assets/js/jquery.uniform.js','assets/js/jquery.mask.js'),
     ),
     'footer' => array(
         'title' => 'Smasy',
@@ -60,11 +60,24 @@ $config = array(
             'label' => 'Turmas',
             'href' => base_url().'turmas',
             'icon' => 'fa-book',
-        ),
-        'modalidades' => array(
-            'label' => 'Modalidades',
-            'href' => base_url().'modalidades',
-            'icon' => 'fa-tags',
+            'submenu' => array(
+                'listar' => array(
+                    'label' => 'Turmas',
+                    'href' => base_url().'turmas',
+                ),
+                'modalidades' => array(
+                    'label' => 'Modalidades',
+                    'href' => base_url().'modalidades',
+                ),
+                'horarios' => array(
+                    'label' => 'Horarios',
+                    'href' => base_url().'horarios',
+                ),
+                'faixaetaria' => array(
+                    'label' => 'Faixa etaria',
+                    'href' => base_url().'faixaetaria',
+                ),
+            ),
         ),
         'financeiro' => array(
             'label' => 'Financeiro',

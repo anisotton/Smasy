@@ -1,25 +1,25 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Modalidades extends SY_Controller {
+class Horarios extends SY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('modalidades_model','',TRUE);
-        $this->model = $this->modalidades_model;
+        $this->load->model('horarios_model','',TRUE);
+        $this->model = $this->horarios_model;
         $this->data['activeMenu'] = 'turmas';
-        $this->data['activeSubMenu'] = 'modalidades';
+        $this->data['activeSubMenu'] = 'horarios';
     }
 
     public function index()
     {
-        $this->data['view'] = 'turmas/modalidades/listar';
+        $this->data['view'] = 'turmas/horarios/listar';
         $this->data['dados'] = $this->model->getList();
         $this->load->view('layout/index',  $this->data);
     }
 
-    private function modalidade(){
-        $this->data['view'] = 'turmas/modalidades/modalidade';
+    private function horario(){
+        $this->data['view'] = 'turmas/horarios/horario';
 
         $this->load->view('layout/index', $this->data);
     }
@@ -28,15 +28,14 @@ class Modalidades extends SY_Controller {
     {
         $this->data['dado']['id'] = '-1';
 
-        $this->modalidade();
+        $this->horario();
 
     }
 
     public function edit($id)
     {
         $this->data['dado'] = (array)$this->model->get($id);
-        $this->data['dado']['valor'] = str_replace('.',',',$this->data['dado']['valor']);
-        $this->modalidade();
+        $this->horario();
     }
 
 
@@ -49,11 +48,7 @@ class Modalidades extends SY_Controller {
             $isnew = true;
         }
 
-        if ($this->form_validation->run('modalidade') != false) {
-            $valor = str_replace(',','.',str_replace('.','',$this->data['dado']['valor']));
-
-            $this->data['dado']['valor'] = $valor;
-
+        if ($this->form_validation->run('horario') != false) {
             if($isnew === true){
                 $result = $this->model->add($this->data['dado']);
             }else{
@@ -62,7 +57,7 @@ class Modalidades extends SY_Controller {
 
             if($result == TRUE){
                 $this->session->set_flashdata('success','Registro adicionado com sucesso!');
-                redirect(base_url() . 'modalidades');
+                redirect(base_url() . 'horarios');
             }else{
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
             }
