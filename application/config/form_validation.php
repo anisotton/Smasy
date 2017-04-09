@@ -179,5 +179,18 @@ $config = array(
                             'rules'=>'required|trim'
                         ),
                     ),
+                'sala' =>
+                    array(
+                        array(
+                            'field'=>'nome',
+                            'label'=>'Nome',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'capacidade',
+                            'label'=>'Capacidade',
+                            'rules'=>'required|trim'
+                        ),
+                    ),
                 );
 			   

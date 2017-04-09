@@ -77,6 +77,10 @@ $config = array(
                     'label' => 'Faixa etaria',
                     'href' => base_url().'faixaetarias',
                 ),
+                'salas' => array(
+                    'label' => 'Salas',
+                    'href' => base_url().'salas',
+                ),
             ),
         ),
         'financeiro' => array(

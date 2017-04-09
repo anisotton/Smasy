@@ -16,6 +16,7 @@
     - ✔ Schedule Module
     - ✔ Age group Module
     - ✔ Modalities Module
+    - ✔ Room Module
 - ☐ Financial Module
     - ✔ Contracts Module
     - ☐ Launcheses Module
