@@ -13,7 +13,9 @@
 - ✔ Student Module
 - ✔ Teacher Module
 - ☐ Class Module
-- ☐ Modalities Module
+    - ✔ Schedule Module
+    - ✔ Age group Module
+    - ✔ Modalities Module
 - ☐ Financial Module
     - ✔ Contracts Module
     - ☐ Launcheses Module
