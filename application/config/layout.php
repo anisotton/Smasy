@@ -75,7 +75,7 @@ $config = array(
                 ),
                 'faixaetaria' => array(
                     'label' => 'Faixa etaria',
-                    'href' => base_url().'faixaetaria',
+                    'href' => base_url().'faixaetarias',
                 ),
             ),
         ),

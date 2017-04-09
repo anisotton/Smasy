@@ -161,5 +161,23 @@ $config = array(
                             'rules'=>'required|trim'
                         ),
                     ),
+                'faixaetaria' =>
+                    array(
+                        array(
+                            'field'=>'nome',
+                            'label'=>'Nome',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'idadeini',
+                            'label'=>'Idade inicial',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'idadefim',
+                            'label'=>'Idade final',
+                            'rules'=>'required|trim'
+                        ),
+                    ),
                 );
 			   
