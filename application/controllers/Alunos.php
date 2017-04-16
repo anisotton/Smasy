@@ -22,13 +22,8 @@ class Alunos extends SY_controller {
 
     public function adicionar()
     {
-        $this->layout['head']['scripts'][] = base_url().'assets/js/bootstrap-datepicker.js';
-        $this->layout['head']['scripts'][] = base_url().'assets/js/masked.js';
         $this->layout['head']['scripts'][] = base_url().'assets/js/smasy/pessoas.js';
         $this->layout['head']['scripts'][] = base_url().'assets/js/smasy/alunos.js';
-        $this->layout['head']['stylesheets'][] = base_url().'assets/css/datepicker.css';
-        $this->layout['head']['stylesheets'][] = base_url().'assets/css/jquery-ui.min.css';
-        $this->layout['head']['stylesheets'][] = base_url().'assets/css/jquery-ui.theme.min.css';
         $this->data['estados'] = $this->smasy_model->getEstados();
         $this->data['aluno'] = array('ra'=>'-1');
         $this->data['view'] = 'alunos/aluno';
@@ -94,11 +89,7 @@ class Alunos extends SY_controller {
 
     public function edit($id)
     {
-        $this->layout['head']['scripts'][] = base_url().'assets/js/bootstrap-datepicker.js';
         $this->layout['head']['scripts'][] = base_url().'assets/js/smasy/alunos.js';
-        $this->layout['head']['stylesheets'][] = base_url().'assets/css/datepicker.css';
-        $this->layout['head']['stylesheets'][] = base_url().'assets/css/jquery-ui.min.css';
-        $this->layout['head']['stylesheets'][] = base_url().'assets/css/jquery-ui.theme.min.css';
 
         $this->data['aluno'] = (array)$this->alunos_model->get($id);
 

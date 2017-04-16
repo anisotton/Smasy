@@ -12,14 +12,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config = array(
     'head' => array(
         'title' => 'Smasy',
-        'stylesheets' => array('assets/css/uniform.css','assets/css/smasy/smasy.css'),
+        'stylesheets' => array('assets/css/uniform.css',
+            'assets/css/datepicker.css',
+            'assets/css/jquery-ui.min.css',
+            'assets/css/jquery-ui.theme.min.css',
+            'assets/css/smasy/smasy.css'),
         'charset' => 'UTF-8',
         'favicon' => 'assets/img/favicon.ico',
-        'scripts' => array('assets/js/jquery.uniform.js','assets/js/masked.js'),
+        'scripts' => array('assets/js/jquery.uniform.js',
+            'assets/js/jquery.mask.js',
+            'assets/js/jquery.dataTables.min.js'),
     ),
     'footer' => array(
         'title' => 'Smasy',
-        'scripts' => array('assets/js/smasy/smasy.js'),
+        'scripts' => array('assets/js/bootstrap-datepicker.js',
+            'assets/js/smasy/smasy.js'),
     ),
     'navbar' => array(
         'search' => false,
@@ -60,11 +67,28 @@ $config = array(
             'label' => 'Turmas',
             'href' => base_url().'turmas',
             'icon' => 'fa-book',
-        ),
-        'modalidades' => array(
-            'label' => 'Modalidades',
-            'href' => base_url().'modalidades',
-            'icon' => 'fa-tags',
+            'submenu' => array(
+                'turmas' => array(
+                    'label' => 'Turmas',
+                    'href' => base_url().'turmas',
+                ),
+                'modalidades' => array(
+                    'label' => 'Modalidades',
+                    'href' => base_url().'modalidades',
+                ),
+                'horarios' => array(
+                    'label' => 'Horarios',
+                    'href' => base_url().'horarios',
+                ),
+                'faixaetaria' => array(
+                    'label' => 'Faixa etaria',
+                    'href' => base_url().'faixaetarias',
+                ),
+                'salas' => array(
+                    'label' => 'Salas',
+                    'href' => base_url().'salas',
+                ),
+            ),
         ),
         'financeiro' => array(
             'label' => 'Financeiro',
@@ -78,6 +102,10 @@ $config = array(
                 'contratos' => array(
                     'label' => 'Contratos',
                     'href' => base_url().'contratos',
+                ),
+                'planospgto' => array(
+                    'label' => 'Planos de pagamento',
+                    'href' => base_url().'planospgto',
                 ),
                 'lancamentos' => array(
                     'label' => 'Lançamentos',

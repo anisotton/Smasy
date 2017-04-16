@@ -13,6 +13,7 @@ class Contratos extends SY_Controller {
     {
         $this->data['view'] = 'financeiro/contratos/listar';
         $this->data['contratos'] = $this->contratos_model->getList();
+        $this->data['activeSubMenu'] = 'contratos';
         $this->load->view('layout/index',  $this->data);
     }
 
@@ -46,9 +47,9 @@ class Contratos extends SY_Controller {
 
         $config['overwrite']            = true;
         $config['remove_spaces']        = true;
-        $config['file_name']            = strtolower($this->data['contrato']['nome']);
+        $config['file_name']            = convert_accented_characters(urldecode(strtolower($this->data['contrato']['nome'])));
         $config['upload_path']          = FCPATH.'assets/arquivos/contratos/';
-        $config['allowed_types']        = 'doc|pdf|txt';
+        $config['allowed_types']        = 'docx|pdf';
         $config['max_size']             = 1024;
 
         $this->load->library('upload', $config);
@@ -62,6 +63,7 @@ class Contratos extends SY_Controller {
             $upload = $this->upload->do_upload('arquivo');
             $arquivo = array('upload_data' => $this->upload->data());
             $this->data['contrato']['arquivo'] =  base_url().'assets/arquivos/contratos/'.$arquivo['upload_data']['file_name'];
+            $this->data['contrato']['caminhoarquivo'] =  $arquivo['upload_data']['full_path'];
         }else{
             $upload = true;
         }

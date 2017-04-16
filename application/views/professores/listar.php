@@ -30,10 +30,10 @@
                             <td><?php echo $professore->nome;?></a></td>
                             <td><?php echo implode(' | ',array_filter($telefones));?></td>
                             <td><?php echo $professore->email;?></td>
-                            <td style="text-align: center">
-                                <a title="Imprimir contrato">&nbsp;<i class="fa fa-file-text-o"></i>&nbsp;</a>
-                                <a title="Turmas">&nbsp;<i class="fa fa-book"></i>&nbsp;</a>
-                                <a title="Horarios">&nbsp;<i class="fa fa-clock-o"></i>&nbsp;</a>
+                            <td style="text-align: center" class="no-clickable">
+                                <a onclick="window.open('<?php echo base_url();?>relatorios/contratos/professor/<?php echo $professore->codprof?>')" href="#" title="Imprimir contrato">&nbsp;<i class="fa fa-file-text-o"></i>&nbsp;</a>
+                                <a target="_blank" title="Turmas">&nbsp;<i class="fa fa-book"></i>&nbsp;</a>
+                                <a target="_blank" title="Horarios">&nbsp;<i class="fa fa-clock-o"></i>&nbsp;</a>
                             </td>
                         </tr>
                     <?php endforeach;?>

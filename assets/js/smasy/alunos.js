@@ -1,6 +1,5 @@
 jQuery(document).ready(function () {
-
-    jQuery('#dtnascimento').on('change',function () {
+    jQuery(this).on('change',"#dtnascimento",function () {
         if(jQuery(this).val()){
             var birthDate = jQuery('#dtnascimento').val();
             if(getAge(birthDate) >= 18){

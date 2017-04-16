@@ -1,5 +1,7 @@
-<div class="row-fluid" style="margin-top: 0">
-    <div class="span12">
-        <strong>Listar Turmas</strong>
-    </div>
+<div class="row-fluid">
+    <a href="<?php echo base_url();?>turmas/adicionar" class="btn btn-success pull-right">
+        <i class="icon-plus icon-white"></i>
+        Adicionar
+    </a>
 </div>
+<?php $this->load->view('html/table', $table);?>

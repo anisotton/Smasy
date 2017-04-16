@@ -1,13 +1,18 @@
 <?php
-class Modalidades_model extends CI_Model {
+class Modalidades_model extends SY_Model {
 
     /**
-     * author: Ramon Silva 
-     * email: silva018-mg@yahoo.com.br
-     * 
+     * @var string
      */
-    
-    function __construct() {
-        parent::__construct();
-    }
+    protected $table = 'smasy_modalidade';
+
+    /**
+     * @var string
+     */
+    protected $colOrder = 'nome';
+
+    /**
+     * @var string
+     */
+    protected $primaryKey = 'id';
 }

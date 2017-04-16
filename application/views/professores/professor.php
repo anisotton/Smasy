@@ -206,7 +206,7 @@
                                         <div class="controls">
                                             <div class="input-prepend span3">
                                                 <span class="add-on">R$</span>
-                                                <input placeholder="Hora" id="valorhora" class="span9" type="text" name="valorhora" value="<?php echo $professor['valorhora']; ?>"  />
+                                                <input placeholder="Hora" id="valorhora" class="span9 mask-money" type="text" name="valorhora" value="<?php echo $professor['valorhora']; ?>"  />
                                             </div>
                                             <div class="input-append span3">
                                                 <input placeholder="Perc. p/ aluno" id="percaluno" class="span10" type="text" name="percaluno" value="<?php echo $professor['percaluno']; ?>"  />

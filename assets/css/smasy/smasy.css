@@ -7,3 +7,7 @@ ul.ui-autocomplete li{
 }
 .nav-tabs li.disabled { color: grey; }
 .nav-tabs li.disabled a:hover { border-color: transparent; }
+
+.data-table thead tr{
+    cursor: pointer;
+}
