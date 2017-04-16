@@ -16,6 +16,7 @@
             <thead>
             <tr>
                 <th>Nome</th>
+                <th>Taxa de matricula</th>
                 <th>Valor</th>
             </tr>
             </thead>
@@ -23,7 +24,8 @@
             <?php if(count($dados)>0):
                 foreach ($dados as $dado):?>
                     <tr class="row-clickable" data-link="<?php echo base_url()."modalidades/edit/{$dado->id}";?>">
-                        <td><?php echo $dado->nome;?></a></td>
+                        <td><?php echo $dado->nome;?></td>
+                        <td><?php echo $dado->taxamatricula;?></td>
                         <td><?php echo $dado->valor;?></td>
                     </tr>
                 <?php endforeach;?>

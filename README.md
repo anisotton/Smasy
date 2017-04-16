@@ -12,13 +12,15 @@
 - ✔ People Module
 - ✔ Student Module
 - ✔ Teacher Module
-- ☐ Class Module
+- ✔ Class Module
     - ✔ Schedule Module
     - ✔ Age group Module
     - ✔ Modalities Module
     - ✔ Room Module
+    - ✔ Registration Module
 - ☐ Financial Module
     - ✔ Contracts Module
+    - ✔ Payment plan
     - ☐ Launcheses Module
 - ☐ Reports Module
     - ☐ Student

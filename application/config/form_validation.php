@@ -28,19 +28,6 @@ $config = array(
                                 'rules'=>'required|trim'
                             ),
                         ),
-                'contrato' =>
-                    array(
-                        array(
-                            'field'=>'nome',
-                            'label'=>'Nome',
-                            'rules'=>'required|trim'
-                        ),
-                        array(
-                            'field'=>'tipo',
-                            'label'=>'Tipo',
-                            'rules'=>'required|trim'
-                        ),
-                    ),
                 'alunoMenor' =>
                         array(
                             array(
@@ -130,6 +117,19 @@ $config = array(
                             'rules'=>'required|trim'
                         ),
                     ),
+                'contrato' =>
+                    array(
+                        array(
+                            'field'=>'nome',
+                            'label'=>'Nome',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'tipo',
+                            'label'=>'Tipo',
+                            'rules'=>'required|trim'
+                        ),
+                    ),
                 'modalidade' =>
                     array(
                         array(
@@ -189,6 +189,75 @@ $config = array(
                         array(
                             'field'=>'capacidade',
                             'label'=>'Capacidade',
+                            'rules'=>'required|trim'
+                        ),
+                    ),
+                'planopgto' =>
+                    array(
+                        array(
+                            'field'=>'nome',
+                            'label'=>'Nome',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'parcelas',
+                            'label'=>'Parcelas',
+                            'rules'=>'required|trim'
+                        ),
+                    ),
+                'matricula' =>
+                    array(
+                        array(
+                            'field'=>'ra',
+                            'label'=>'Aluno',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'codturma',
+                            'label'=>'Turma',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'codplanopgto',
+                            'label'=>'Plano de pagamento',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'formapgto',
+                            'label'=>'Forma de pagamento',
+                            'rules'=>'required|trim'
+                        ),
+                    ),
+                'turma' =>
+                    array(
+                        array(
+                            'field'=>'codturma',
+                            'label'=>'Codigo',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'nome',
+                            'label'=>'Nome',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'codmodalidade',
+                            'label'=>'Modalidade',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'codfaixaetaria',
+                            'label'=>'Faixa etaria',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'codfaixaetaria',
+                            'label'=>'Faixa etaria',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'codfaixaetaria',
+                            'label'=>'Faixa etaria',
                             'rules'=>'required|trim'
                         ),
                     ),

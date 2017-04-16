@@ -51,8 +51,10 @@ class Modalidades extends SY_Controller {
 
         if ($this->form_validation->run('modalidade') != false) {
             $valor = str_replace(',','.',str_replace('.','',$this->data['dado']['valor']));
-
             $this->data['dado']['valor'] = $valor;
+
+            $taxamatricula = str_replace(',','.',str_replace('.','',$this->data['dado']['taxamatricula']));
+            $this->data['dado']['taxamatricula'] = $taxamatricula;
 
             if($isnew === true){
                 $result = $this->model->add($this->data['dado']);

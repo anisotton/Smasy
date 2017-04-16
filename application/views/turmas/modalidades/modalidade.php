@@ -31,6 +31,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="control-group">
+                                <label for="taxamatricula" class="control-label">Taxa de matricula<span class="required">*</span></label>
+                                <div class="controls">
+                                    <div class="input-prepend span3">
+                                        <span class="add-on">R$</span>
+                                        <input placeholder="Valor" id="taxamatricula" class="mask-money" type="text" name="taxamatricula" value="<?php echo $dado['taxamatricula']; ?>"  />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-actions">
                             <div class="span">

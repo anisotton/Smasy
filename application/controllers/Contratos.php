@@ -43,7 +43,6 @@ class Contratos extends SY_Controller {
 
     public function save(){
         $this->load->library('form_validation');
-        $this->load->helper('text');
         $this->data['contrato'] = array_filter($this->security->xss_clean($this->input->post()));
 
         $config['overwrite']            = true;

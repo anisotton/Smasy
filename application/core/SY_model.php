@@ -8,6 +8,10 @@ class SY_Model extends CI_Model{
 
     protected $colOrder;
 
+    public function getPrimary(){
+        return $this->primaryKey;
+    }
+
     public function update($data){
         $data['recmodifiedon'] = date('Y-m-d H:i:s');
         $data['recmodifiedby'] = 1;
@@ -28,6 +32,12 @@ class SY_Model extends CI_Model{
         return FALSE;
     }
 
+    public function delete($key){
+        $this->db->where($this->primaryKey, $key);
+
+        return $this->db->delete($this->table);
+    }
+
     public function get($key){
         return $this->db
             ->select($this->table.'.*')
@@ -46,6 +56,9 @@ class SY_Model extends CI_Model{
         }
         $this->db->select($this->table.'.*');
         foreach ($filters as $coluna => $filter){
+            if(!isset($filter['condicao'])){
+                $filter['condicao'] = '';
+            }
             switch (strtolower($filter['condicao'])){
                 case 'like_after':
                     $this->db->like("{$this->table}.{$coluna}", $filter['valor'], 'after');
