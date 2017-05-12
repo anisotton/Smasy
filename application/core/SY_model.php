@@ -35,7 +35,12 @@ class SY_Model extends CI_Model{
     public function delete($key){
         $this->db->where($this->primaryKey, $key);
 
-        return $this->db->delete($this->table);
+        try{
+            $this->db->delete($this->table);
+        }catch (Exception $e){
+            return $e->getMessage();
+        }
+        return true;
     }
 
     public function get($key){
@@ -45,6 +50,7 @@ class SY_Model extends CI_Model{
             ->get($this->table)
             ->row();
     }
+
     /** Função utilizada para buscar a tabela conforme filtros
      * @param array $filters Filtros para busca, no seguinte padrão:
      *              array(key=>array('valor'=>value,'condicao'=>(LIKE|INKEY|NOT|IN)

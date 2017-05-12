@@ -18,6 +18,7 @@
                 <th>Nome</th>
                 <th>Taxa de matricula</th>
                 <th>Valor</th>
+                <th>#</th>
             </tr>
             </thead>
             <tbody>
@@ -27,6 +28,7 @@
                         <td><?php echo $dado->nome;?></td>
                         <td><?php echo $dado->taxamatricula;?></td>
                         <td><?php echo $dado->valor;?></td>
+                        <td><a href="<?php echo base_url()."modalidades/remove/{$dado->id}";?>">&nbsp;<i class="fa fa-trash"></i>&nbsp;</a></td>
                     </tr>
                 <?php endforeach;?>
             <?php else:?>

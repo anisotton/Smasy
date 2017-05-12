@@ -25,6 +25,7 @@ class Turmas_model extends SY_Model {
                 sala.nome as sala,
                 GROUP_CONCAT(DISTINCT pessoa.nome separator '|') as professor,
                 GROUP_CONCAT(dia.nome separator '|') as dias,
+                GROUP_CONCAT(dia.id separator '|') as coddias,
                 GROUP_CONCAT(DISTINCT CONCAT(CONVERT(horario.horaini,CHAR(5)), ' as ', CONVERT(horario.horafim,CHAR(5))) separator '|') as horario")
             ->join('smasy_turmacmpl as cmpl',$this->table.'.codturma = cmpl.codturma','inner')
             ->join('smasy_modalidade as modalidade',$this->table.'.codmodalidade = modalidade.id','inner')
@@ -54,8 +55,8 @@ class Turmas_model extends SY_Model {
 
         $faixa = $this->faixaetarias_model->get($turma->codfaixaetaria);
 
-        $dataIni = new DateTime("- {$faixa->idadeini} years");
-        $dataFim = new DateTime($dataIni->format('Y-m-d')." +".($faixa->idadefim-$faixa->idadeini)." years");
+        $dataIni = new DateTime(" - {$faixa->idadeini} years");
+        $dataFim = new DateTime(" - {$faixa->idadefim} years");
 
         return $this->db
             ->select("smasy_aluno.*,
@@ -66,8 +67,8 @@ class Turmas_model extends SY_Model {
                       pessoaResp.nome AS responsavel")
             ->join('smasy_pessoa as pessoaAluno','smasy_aluno.codpessoa = pessoaAluno.codigo','inner')
             ->join('smasy_pessoa as pessoaResp','smasy_aluno.responsavel = pessoaResp.codigo','left')
-            ->where('pessoaAluno.dtnascimento>=',$dataIni->format('Y-m-d'))
-            ->where('pessoaAluno.dtnascimento<=',$dataFim->format('Y-m-d'))
+            ->where('pessoaAluno.dtnascimento <= ',$dataIni->format('Y-m-d'))
+            ->where('pessoaAluno.dtnascimento >= ',$dataFim->format('Y-m-d'))
             ->where("ra NOT IN(SELECT ra FROM smasy_matriculaaluno WHERE codturma = '{$turma->codturma}')")
             ->get('smasy_aluno')
             ->result();

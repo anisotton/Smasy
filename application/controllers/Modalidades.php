@@ -9,6 +9,7 @@ class Modalidades extends SY_Controller {
         $this->model = $this->modalidades_model;
         $this->data['activeMenu'] = 'turmas';
         $this->data['activeSubMenu'] = 'modalidades';
+        $this->linkList = base_url() . 'modalidades';
     }
 
     public function index()
@@ -64,7 +65,7 @@ class Modalidades extends SY_Controller {
 
             if($result == TRUE){
                 $this->session->set_flashdata('success','Registro adicionado com sucesso!');
-                redirect(base_url() . 'modalidades');
+                redirect($this->linkList);
             }else{
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
             }

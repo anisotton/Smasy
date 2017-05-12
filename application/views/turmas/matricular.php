@@ -21,7 +21,7 @@ $CI =& get_instance();
                         </tr>
                         <tr>
                             <?php foreach($compl as $v){
-                                $professores[] = $v->prof;
+                                $professores[$v->codprof] = $v->prof;
                                 $dia[] = $v->dia;
                                 $codDia[] = $v->coddia;
                                 $hora[$v->hora] = $v->hora;

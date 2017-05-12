@@ -12,6 +12,14 @@ class Smasy extends SY_Controller {
     public function index()
     {
         $this->data['view'] = 'smasy/painel';
+        $this->layout['head']['scripts'][] = base_url().'assets/js/moment.min.js';
+        $this->layout['head']['scripts'][] = base_url().'assets/js/fullcalendar.min.js';
+        $this->layout['head']['scripts'][] = base_url().'assets/js/fullcalendar-pt-br.js';
+        $this->layout['head']['scripts'][] = base_url().'assets/js/smasy/painel.js';
+
+
+        $this->layout['head']['stylesheets'][] = base_url().'assets/css/fullcalendar.css';
+        $this->layout['head']['stylesheets'][] = base_url().'assets/css/fullcalendar.print.css';
         $this->load->view('layout/index',  $this->data);
     }
 

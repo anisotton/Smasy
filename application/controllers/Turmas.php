@@ -91,7 +91,7 @@ class Turmas extends SY_Controller {
         $filters['codturma'] = array('valor'=>$codturma);
         $this->data['compl'] = $this->turmascmpl_model->getByFilter($filters);
         $this->data['modalidade'] = $this->modalidades_model->get($this->data['turma']['codmodalidade']);
-        $this->data['alunos'] = $this->getAlunosAptoMatric($this->data['turma']['codturma']);
+        $this->data['alunos'] = $this->model->getAlunosAptoMatric($this->data['turma']['codturma']);
         $this->data['planospgto'] = $this->planospgto_model->getList();
         $this->data['formaspgto'] = $this->formaspgto_model->getList();
         $this->data['contratos'] = $this->contratos_model->getByFilter(array('tipo'=>array('valor'=>1)));
@@ -109,25 +109,28 @@ class Turmas extends SY_Controller {
         $this->load->view('layout/index',  $this->data);
     }
 
-    private function getAlunosAptoMatric($codturma){
-        return $this->model->getAlunosAptoMatric($codturma);
-    }
-
     public function getAlunosMatric($codturma){
         return $this->model->getAlunosMatric($codturma);
     }
 
     public function getQtdAula($data, $dias){
         $inicial = new DateTime($data);
-        $final = new DateTime();
+        $final = new DateTime('2017-05-08');
         $diasDif = $inicial->diff($final, true)->days;
-        $qtd = 0;
+
+        $semanas = ceil($diasDif / 7);
+        $qtd = (int)$semanas*count($dias);
+
         if(is_array($dias)){
             foreach ($dias as $dia){
-                $qtd += intval($diasDif / $dia) + ($inicial->format('N') + $diasDif % $dia >= $dia);
+                if($dia > $final->format('N')){
+                    $qtd--;
+                }
             }
         }else{
-            $qtd = intval($diasDif / 7) + ($inicial->format('N') + $diasDif % 7 >= 7);
+            if($dias > $final->format('N')){
+                $qtd--;
+            }
         }
 
         return $qtd;
@@ -234,5 +237,42 @@ class Turmas extends SY_Controller {
         }else{
             $this->edit($this->data['dado']['id']);
         }
+    }
+
+
+    public function getTurmasCalendario(){
+        $this->load->library('DateTools');
+
+
+        $diasSemana = $this->datetools->GetYeardays('2017-05-01','2017-05-30');
+
+        $turmas = $this->model->getList();
+        $result = array();
+
+        foreach ($turmas as $turma){
+            $horarios = explode('|',$turma->horario);
+            $dias = explode('|', $turma->coddias);
+            foreach($dias as $key => $dia){
+                if(count($horarios)>1){
+                    $hora = explode(' as ', $horarios[$key]);
+                }else{
+                    $hora = explode(' as ', $horarios[0]);
+                }
+
+                foreach($diasSemana[$dia] as $d){
+                    $event['id'] = $turma->codturma;
+                    $event['title'] = $turma->modalidade.' - '.$turma->professor;
+                    $date = new DateTime("{$d}{$hora[0]}");
+                    $event['start'] = $date->format(DateTime::ATOM);
+                    $date = new DateTime("{$d}{$hora[1]}");
+                    $event['end'] = $date->format(DateTime::ATOM);
+                    $event['url'] = base_url().'turmas/visualizar/'.$turma->codturma;
+                    $result[] = $event;
+                }
+            }
+        }
+
+        echo json_encode($result);
+        exit();
     }
 }

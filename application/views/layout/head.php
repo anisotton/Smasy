@@ -23,7 +23,7 @@
 <link rel="stylesheet" type='text/css' href="<?php echo $url?>" />
 <?php endforeach;?>
 <script type="application/javascript" src="<?php echo base_url()?>assets/js/jquery.min.js"></script>
-<script type="application/javascript" src="<?php echo base_url()?>assets/js/jquery.ui.custom.js"></script>
+<script type="application/javascript" src="<?php echo base_url()?>assets/js/jquery-ui.min.js"></script>
 <script type="application/javascript" src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
 <script type="application/javascript" src="<?php echo base_url()?>assets/js/jquery.gritter.min.js"></script>
 <script type="application/javascript" src="<?php echo base_url()?>assets/js/jquery.validate.js"></script>
