@@ -261,5 +261,18 @@ $config = array(
                             'rules'=>'required|trim'
                         ),
                     ),
+                'login' =>
+                    array(
+                        array(
+                            'field'=>'identity',
+                            'label'=>'Usuário',
+                            'rules'=>'required|trim'
+                        ),
+                        array(
+                            'field'=>'password',
+                            'label'=>'Senha',
+                            'rules'=>'required|trim'
+                        ),
+                    ),
                 );
 			   

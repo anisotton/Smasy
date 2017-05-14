@@ -37,7 +37,7 @@ $config = array(
                 ),
                 'logout' => array(
                     'label' => 'Sair',
-                    'href' => base_url().'smasy/logout',
+                    'href' => base_url().'auth/logout',
                     'icon' => 'fa-sign-out',
                 ),
         ),
