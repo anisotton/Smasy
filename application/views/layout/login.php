@@ -28,7 +28,7 @@ $this->load->helper('url');
         <div class="control-group">
             <div class="controls">
                 <div class="main_input_box">
-                    <span class="add-on bg_lg"><i class="icon-user"> </i></span>
+                    <span class="add-on bg_lg"><i class="fa fa-user"> </i></span>
                     <input type="text" name="identity" placeholder="Usuário" />
                 </div>
             </div>
@@ -36,7 +36,7 @@ $this->load->helper('url');
         <div class="control-group">
             <div class="controls">
                 <div class="main_input_box">
-                    <span class="add-on bg_ly"><i class="icon-lock"></i></span><input name="password" type="password" placeholder="Senha" />
+                    <span class="add-on bg_ly"><i class="fa fa-lock"></i></span><input name="password" type="password" placeholder="Senha" />
                 </div>
             </div>
         </div>
