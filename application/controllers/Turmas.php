@@ -115,7 +115,7 @@ class Turmas extends SY_Controller {
 
     public function getQtdAula($data, $dias){
         $inicial = new DateTime($data);
-        $final = new DateTime('2017-05-08');
+        $final = new DateTime();
         $diasDif = $inicial->diff($final, true)->days;
 
         $semanas = ceil($diasDif / 7);

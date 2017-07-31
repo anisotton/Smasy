@@ -274,5 +274,13 @@ $config = array(
                             'rules'=>'required|trim'
                         ),
                     ),
+                'coligada' =>
+                    array(
+                        array(
+                            'field'=>'nome_fantasia',
+                            'label'=>'Nome Fantasia',
+                            'rules'=>'required|trim'
+                        ),
+                    ),
                 );
 			   

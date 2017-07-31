@@ -15,16 +15,27 @@
 
                     <form  action="<?php echo base_url()?>salas/save" enctype="multipart/form-data" method="post" accept-charset="utf-8" class="form-horizontal" >
                         <input value="<?php echo $dado['id'];?>" name="id" type="hidden" />
-                        <div class="span" style="margin-left: 5%">
+                        <div class="span11" style="margin-left: 5%">
                             <div class="control-group">
-                                <label for="nome" class="control-label">Sala<span class="required">*</span></label>
+                                <label for="nome" class="control-label">Nome<span class="required">*</span></label>
                                 <div class="controls">
                                     <div class="input-prepend span4">
                                         <input placeholder="Nome" id="nome" class="span12" type="text" name="nome" value="<?php echo $dado['nome']; ?>"  />
                                     </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="Capacidade" class="control-label">Capacidade<span class="required">*</span></label>
+                                <div class="controls">
                                     <div class="input-prepend span2">
                                         <span class="add-on"><i class="fa fa-users"></i></span>
-                                        <input placeholder="Capacidade" id="capacidade" class="span10" type="text" name="capacidade" value="<?php echo $dado['capacidade']; ?>"  />
+                                        <input id="capacidade" class="span10" type="text" name="capacidade" value="<?php echo $dado['capacidade']; ?>"  />
+                                    </div>
+                                    <div class="input-prepend span4">
+                                        <label style="margin-top: 1%;">
+                                            <input id="produtiva" <?php echo ($dado['produtiva']) == 1?'checked="checked"':''; ?> type="checkbox" name="produtiva" value="1"  />
+                                            Sala produtiva
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -33,7 +44,7 @@
                             <div class="span">
                                 <div class="span3 pull-right">
                                     <button type="submit" class="btn btn-success pull-right"><i class="fa fa-floppy-o"></i> Salvar</button>
-                                    <a href="<?php echo base_url() ?>horarios" id="" class="btn pull-right"><i class="fa fa-arrow-left"></i> Voltar</a>
+                                    <a href="<?php echo base_url() ?>salas" id="" class="btn pull-right"><i class="fa fa-arrow-left"></i> Voltar</a>
                                 </div>
                             </div>
                         </div>

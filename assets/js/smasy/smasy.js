@@ -33,17 +33,16 @@ jQuery(document).ready(function(){
         "language": languageDataTable
     });
 
-    jQuery(".mask-phone").focusout(function(){
-        var phone, element;
-        element = $(this);
-        element.unmask();
-        phone = element.val().replace(/\D/g, '');
-        if(phone.length > 10) {
-            element.mask("(99) 99999-999?9");
-        } else {
-            element.mask("(99) 9999-9999?9");
+    var Mask = function (val) {
+        return val.replace(/\D/g, '').length === 11 ? '(00) 0000-00000' : '(00) 0000-00009';
+    };
+    var spOptions = {
+        onKeyPress: function(val, e, field, options) {
+            field.mask(Mask.apply({}, arguments), options);
         }
-    }).trigger('focusout');
+    };
+
+    jQuery('.mask-phone').mask(Mask, spOptions);
     jQuery(".mask-cpf").mask("999.999.999-99");
     jQuery(".mask-date").mask("99/99/9999");
     jQuery(".mask-cep").mask("99999-999");

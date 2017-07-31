@@ -1,5 +1,5 @@
 <?php
-class Params_model extends SY_Model {
+class Coligadas_model extends SY_Model {
 
     /**
      * @var string
