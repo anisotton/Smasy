@@ -49,9 +49,12 @@ class Pessoas extends SY_controller {
         $this->data['pessoa'] = (array)$this->pessoa_model->get($id);
 
         $this->data['pessoa']['dtnascimento'] = implode('/',array_reverse(explode('-',$this->data['pessoa']['dtnascimento'])));
+        $this->data['pessoa']['ufcartident'] = implode('/',array_reverse(explode('-',$this->data['pessoa']['ufcartident'])));
 
+        $naturalidade = $this->smasy_model->getCidade($this->data['pessoa']['naturalidade']);
+
+        $this->data['pessoa']['naturalidade_desc'] = $naturalidade->nome;
         $this->data['estados'] = $this->smasy_model->getEstados();
-        $this->data['naturalidade'] = $this->smasy_model->getCidades($this->data['pessoa']['estadonatal']);
         $this->data['cidades'] = $this->smasy_model->getCidades($this->data['pessoa']['estado']);
 
         $this->data['view'] = 'pessoas/pessoa';
@@ -66,6 +69,9 @@ class Pessoas extends SY_controller {
             $isnew = true;
         }
         $this->data['pessoa']['dtnascimento'] = implode('-',array_reverse(explode('/',$this->data['pessoa']['dtnascimento'])));
+        $this->data['pessoa']['ufcartident'] = implode('-',array_reverse(explode('/',$this->data['pessoa']['ufcartident'])));
+
+        unset($this->data['pessoa']['naturalidade_desc']);
 
         if ($this->form_validation->run('pessoa') != false) {
             if($isnew === true){

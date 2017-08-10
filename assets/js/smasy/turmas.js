@@ -17,6 +17,23 @@ jQuery(document).ready(function () {
             }
         });
     });
+    jQuery(this).on("focus",".autocompletePlanosPgto",function(e) {
+        jQuery(this).autocomplete({
+            source: function(request, response) {
+                jQuery.ajax( {
+                    url: smasy.getBase()+"turmas/buscaPlanosAutocomplete/"+request.term,
+                    dataType: "json",
+                    success: function( data ) {
+                        response( data );
+                    }
+                } );
+            },
+            minLength: 3,
+            select: function( event, ui ) {
+                $(this).parent().find('#codhorario').val(ui.item.id);
+            }
+        });
+    });
 
     jQuery(this).on("focus",".autocompleteHorario",function(e) {
         jQuery(this).autocomplete({

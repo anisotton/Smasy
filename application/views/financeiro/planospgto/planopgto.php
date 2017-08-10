@@ -33,22 +33,30 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label for="parcelas" class="control-label">Parcelas<span class="required">*</span></label>
+                                <label for="parcelas" class="control-label">Detalhes<span class="required">*</span></label>
                                 <div class="controls">
-                                    <input id="parcelas" type="text" name="parcelas" value="<?php echo $dado['parcelas']; ?>"  />
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label for="desconto" class="control-label">Valor<span class="required">*</span></label>
-                                <div class="controls">
-                                    <div class="input-prepend span2">
+                                    <div class="input-prepend span2" style="margin-right: 10px;">
                                         <span id="real" class="add-on <?php echo ($dado['tipodesconto']!=1)?'hidden':''?>">R$</span>
-                                        <input placeholder="Valor" id="desconto" class="<?php echo ($dado['tipodesconto']==1)?'mask-money':''?> span10" type="text" name="desconto" value="<?php echo $dado['desconto']; ?>"  />
+                                        <input placeholder="Desconto" id="desconto" class="<?php echo ($dado['tipodesconto']==1)?'mask-money':''?> span10" type="text" name="desconto" value="<?php echo $dado['desconto']; ?>"  />
                                         <span id="percentual" class="add-on <?php echo ($dado['tipodesconto']!=2)?'hidden':''?>">%</span>
                                     </div>
+                                    <input class="span1" style="width: 9%;" placeholder="Nº Parcelas" id="parcelas" type="text" name="parcelas" value="<?php echo $dado['parcelas']; ?>"  />
+                                </div>
+
+                            </div>
+                            <div class="control-group">
+                                <label for="desconto" class="control-label">Valor</label>
+                                <div class="controls">
+                                    <div class="input-prepend span2">
+                                        <span id="real" class="add-on">R$</span>
+                                        <input placeholder="Desconto Matricula" id="desconto_matricula" class="mask-money span9" type="text" name="desconto_matricula" value="<?php echo $dado['desconto_matricula']; ?>"  />
+                                    </div>
+                                    <label class="span2">
+                                        <input id="global" type="checkbox" name="global" value="1" <?php echo ($dado['global']==1)?'checked="checked"':''?> />
+                                        Global
+                                    </label>
                                 </div>
                             </div>
-
                         </div>
                         <div class="form-actions">
                             <div class="span">

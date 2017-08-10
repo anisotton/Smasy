@@ -19,9 +19,21 @@
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active"><a href="#turma" aria-controls="turma" role="tab" data-toggle="tab">Turma</a></li>
                                 <li role="presentation"><a href="#turmacmpl" aria-controls="turmacmpl" role="tab" data-toggle="tab">Detalhes</a></li>
+                                <li role="presentation"><a href="#turmaplanopgto" aria-controls="turmaplanopgto" role="tab" data-toggle="tab">Planos de Pagamento</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="turma">
+                                    <div class="control-group">
+                                        <label for="coligada" class="control-label">Unidade</label>
+                                        <div class="controls">
+                                            <select name="coligada" id="coligada">
+                                                <option value="">Selecione uma opção</option>
+                                                <?php foreach ($coligadas as $coligada):?>
+                                                    <option <?php echo ($coligada->codigo)==$dado['codcoligada']?'selected':''; ?> value="<?php echo $coligada->codigo; ?>"><?php echo $coligada->nome_fantasia; ?></option>
+                                                <?php endforeach;?>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="control-group">
                                         <label for="codturma" class="control-label">Codigo<span class="required">*</span></label>
                                         <div class="controls">
@@ -125,6 +137,40 @@
                                                         </a>
                                                     <?php else:?>
                                                         <a href="#" onclick="addDetalhe();return false;" id="addDetalhe">
+                                                            <span class="add-on"><i class="fa fa-plus"></i></span>
+                                                        </a>
+                                                    <?php endif;?>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endfor;?>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="turmaplanopgto">
+                                    <?php for($i=0;$i<count($dado['planospgto']);$i++):
+                                        $dado['planospgto'][$i] = (array)$dado['planospgto'][$i];?>
+                                        <div class="control-group detalhes">
+                                            <label for="prof" class="control-label" style="width: 100px;">Plano de pgto<span class="required">*</span></label>
+                                            <div class="controls" style="margin-left: 120px;">
+                                                <div class="input-prepend span3">
+                                                    <input placeholder="Plano" id="<?php echo $i?>_plano" class="span12 autocompletePlanosPgto" type="text" name="planospgto[<?php echo $i?>][plano]" value="<?php echo $dado['planospgto'][$i]['plano']; ?>"  />
+                                                    <input id="<?php echo $i?>_plano" type="hidden" name="planospgto[<?php echo $i?>][idplano]" value="<?php echo $dado['planospgto'][$i]['idplano']; ?>"  />
+                                                </div>
+                                                <div class="input-prepend span2">
+                                                    <input placeholder="Data inicial" id="<?php echo $i?>_planodtini" class="mask-date span9" type="text" name="planospgto[<?php echo $i?>][dtini]" value="<?php echo $dado['planospgto'][$i]['dtini']; ?>"  />
+                                                    <span class="add-on"><i class="fa fa-calendar "></i></span>
+                                                </div>
+                                                <div class="input-prepend span2">
+                                                    <input placeholder="Data final" id="<?php echo $i?>_dtfinal" class="mask-date span9" type="text" name="planospgto[<?php echo $i?>][dtfim]" value="<?php echo $dado['planospgto'][$i]['dtfim']; ?>"  />
+                                                    <span class="add-on"><i class="fa fa-calendar "></i></span>
+                                                </div>
+                                                <div class="input-prepend span1">
+                                                    <?php if($i>0):?>
+                                                        <a href="#" onclick="removePlano(this);return false;" id="removePlano">
+                                                            <span class="add-on"><i class="fa fa-times"></i></span>
+                                                        </a>
+                                                    <?php else:?>
+                                                        <a href="#" onclick="addPlano();return false;" id="addPlano">
                                                             <span class="add-on"><i class="fa fa-plus"></i></span>
                                                         </a>
                                                     <?php endif;?>

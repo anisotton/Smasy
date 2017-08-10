@@ -49,10 +49,10 @@ jQuery(document).ready(function(){
     jQuery('.mask-money').mask('#.##9,99', {reverse: true});
     jQuery('.mask-hour').mask('00:00');
 
-    jQuery('tr.row-clickable td.no-clickable').click(function (e) {
+    jQuery(this).on("click",'tr.row-clickable td.no-clickable',function(e) {
         e.stopPropagation();
     });
-    jQuery('tr.row-clickable').click(function () {
+    jQuery(this).on("click",'tr.row-clickable',function(e) {
         var url = jQuery(this).attr('data-link');
         window.location = url;
     });
@@ -60,7 +60,7 @@ jQuery(document).ready(function(){
 
     jQuery('input[type=checkbox],input[type=radio],input[type=file]').uniform();
 
-    jQuery('.nav-tabs a').on('click',function (e) {
+    jQuery(this).on('click','.nav-tabs a',function (e) {
         if(jQuery(this).parent().hasClass('disabled')){
             e.preventDefault();
             e.stopImmediatePropagation();

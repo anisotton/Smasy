@@ -7,4 +7,12 @@ class Salas extends SY_Controller {
 
     protected $viewBase = 'params/';
 
+    protected function sala(){
+        $this->load->model('coligadas_model','',TRUE);
+        $this->data['view'] = 'params/salas/sala';
+        $this->data['coligadas'] = $this->coligadas_model->getList();
+
+        $this->load->view('layout/index', $this->data);
+    }
+
 }

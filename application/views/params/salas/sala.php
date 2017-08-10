@@ -31,15 +31,21 @@
                                         <span class="add-on"><i class="fa fa-users"></i></span>
                                         <input id="capacidade" class="span10" type="text" name="capacidade" value="<?php echo $dado['capacidade']; ?>"  />
                                     </div>
-                                    <div class="input-prepend span4">
-                                        <label style="margin-top: 1%;">
-                                            <input id="produtiva" <?php echo ($dado['produtiva']) == 1?'checked="checked"':''; ?> type="checkbox" name="produtiva" value="1"  />
-                                            Sala produtiva
-                                        </label>
-                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="coligada" class="control-label">Unidade</label>
+                                <div class="controls">
+                                    <select name="coligada" id="coligada">
+                                        <option value="">Selecione uma opção</option>
+                                        <?php foreach ($coligadas as $coligada):?>
+                                            <option <?php echo ($coligada->codigo)==$dado['codcoligada']?'selected':''; ?> value="<?php echo $coligada->codigo; ?>"><?php echo $coligada->nome_fantasia; ?></option>
+                                        <?php endforeach;?>
+                                    </select>
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-actions">
                             <div class="span">
                                 <div class="span3 pull-right">

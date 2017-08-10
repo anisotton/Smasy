@@ -74,14 +74,10 @@
                                         </div>
                                     </div>
                                     <div class="control-group">
-                                        <label for="naturalidade" class="control-label">Naturalidade<span class="required">*</span></label>
+                                        <label class="control-label" for="naturalidade_desc">Naturalidade<span class="required">*</span></label>
                                         <div class="controls">
-                                            <select name="naturalidade" id="naturalidade">
-                                                <option value="">Selecione uma opção</option>
-                                                <?php foreach ($naturalidade as $cidade):?>
-                                                    <option <?php echo ($cidade->id)==$pessoa['cidade']?'selected':''; ?> value="<?php echo $cidade->id; ?>"><?php echo $cidade->nome; ?></option>
-                                                <?php endforeach;?>
-                                            </select>
+                                            <input data-input-estado="#estadonatal" data-input-value="#naturalidade" class="cidadeAjax" id="naturalidade_desc" type="text" name="naturalidade_desc" value="<?php echo $pessoa['naturalidade_desc']?>"  />
+                                            <input id="naturalidade" type="hidden" name="naturalidade" value="<?php echo $pessoa['naturalidade']?>"  />
                                         </div>
                                     </div>
                                     <div class="control-group">
@@ -123,9 +119,14 @@
                                         </div>
                                     </div>
                                     <div class="control-group">
-                                        <label for="ufcartident " class="control-label">Estado emissor</label>
+                                        <label for="ufcartident" class="control-label">Estado emissor<span class="required">*</span></label>
                                         <div class="controls">
-                                            <input id="ufcartident " type="text" name="ufcartident " value="<?php echo $pessoa['ufcartident ']; ?>"  />
+                                            <select name="ufcartident" id="ufcartident">
+                                                <option value="">Selecione uma opção</option>
+                                                <?php foreach ($estados as $estado):?>
+                                                    <option <?php echo ($estado->id)==$aluno['ufcartident']?'selected':''; ?> value="<?php echo $estado->id; ?>"><?php echo $estado->nome; ?></option>
+                                                <?php endforeach;?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="control-group">

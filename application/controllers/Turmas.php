@@ -6,6 +6,7 @@ class Turmas extends SY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('turmascmpl_model','',TRUE);
+        $this->load->model('turmasplanopgto_model','',TRUE);
         $this->load->model('turmas_model','',TRUE);
         $this->model = $this->turmas_model;
         $this->data['activeMenu'] = 'turmas';
@@ -32,12 +33,14 @@ class Turmas extends SY_Controller {
         $this->load->model('modalidades_model','',TRUE);
         $this->load->model('salas_model','',TRUE);
         $this->load->model('faixaetarias_model','',TRUE);
+        $this->load->model('coligadas_model','',TRUE);
 
         $this->data['view'] = 'turmas/turma';
 
         $this->layout['head']['scripts'][] = base_url().'assets/js/smasy/turmas.js';
         $this->layout['head']['stylesheets'][] = base_url().'assets/css/jquery-ui.min.css';
         $this->layout['head']['stylesheets'][] = base_url().'assets/css/jquery-ui.theme.min.css';
+        $this->data['coligadas'] = $this->coligadas_model->getList();
         $this->data['modalidades'] = $this->modalidades_model->getList();
         $this->data['faixaetarias'] = $this->faixaetarias_model->getList();
         $this->data['salas'] = $this->salas_model->getList();
@@ -49,6 +52,7 @@ class Turmas extends SY_Controller {
     {
         $this->data['dado']['id'] = '-1';
         $this->data['dado']['compl'] = array(array(0));
+        $this->data['dado']['planospgto'] = array(array(0));
         $this->turma();
 
     }
@@ -74,6 +78,9 @@ class Turmas extends SY_Controller {
 
         $filters['codturma'] = array('valor'=>$id);
         $this->data['dado']['compl'] = $this->turmascmpl_model->getByFilter($filters);
+
+        $filters['codturma'] = array('valor'=>$id);
+        $this->data['dado']['planospgto'] = $this->turmasplanopgto_model->getByFilter($filters);
         $this->turma();
     }
 
@@ -150,7 +157,22 @@ class Turmas extends SY_Controller {
         }
 
         echo json_encode($dados);
+    }
 
+    public function buscaPlanoAutocomplete($nome){
+        $this->load->model('planospgto_model','',TRUE);
+        $dado = array();
+        $filters['nome'] = array('valor'=>$nome,'condicao'=>'like_after');
+        $result = $this->planospgto_model->getByFilter($filters);
+
+        foreach ($result as $v){
+            $dado['id'] = $v->id;
+            $dado['label'] = $v->nome;
+            $dado['value'] = $v->nome;
+            $dados[] = $dado;
+        }
+
+        echo json_encode($dados);
     }
 
     public function buscaHorarioAutocomplete($nome){
