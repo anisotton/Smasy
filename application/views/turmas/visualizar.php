@@ -1,5 +1,6 @@
 <?php
 $CI =& get_instance();
+
 ?>
 
 <div class="row-fluid">
@@ -18,29 +19,29 @@ $CI =& get_instance();
                 <table class="table table-bordered table-invoice">
                     <tbody>
                     <tr>
-                    <tr>
-                        <td class="span2">Sala</td>
-                        <td class="span10"><strong><?php echo $turma['sala'];?></strong></td>
-                    </tr>
-                    <tr>
-                        <?php foreach($compl as $v){
-                            $professores[$v->codprof] = $v->prof;
-                            $dia[] = $v->dia;
-                            $codDia[] = $v->coddia;
-                            $hora[$v->hora] = $v->hora;
-                        }
-                       ?>
-                        <td>Dias</td>
-                        <td><strong><?php echo implode(' | ',$dia);?></strong></td>
-                    </tr>
-                    <tr>
-                        <td>Horario</td>
-                        <td><strong><?php echo implode(' | ',$hora);?></strong></td>
-                    </tr>
-                    <tr>
-                        <td>Professores</td>
-                        <td><strong><?php echo implode(' | ',$professores);?></strong></td>
-                    </tr>
+                        <tr>
+                            <td class="span2">Sala</td>
+                            <td class="span10"><strong><?php echo $turma['sala'];?></strong></td>
+                        </tr>
+                        <tr>
+                            <?php foreach($compl as $v){
+                                $professores[$v->codprof] = $v->prof;
+                                $dia[] = $v->dia;
+                                $codDia[] = $v->coddia;
+                                $hora[$v->hora] = $v->hora;
+                            }
+                           ?>
+                            <td>Dias</td>
+                            <td><strong><?php echo implode(' | ',$dia);?></strong></td>
+                        </tr>
+                        <tr>
+                            <td>Horario</td>
+                            <td><strong><?php echo implode(' | ',$hora);?></strong></td>
+                        </tr>
+                        <tr>
+                            <td>Professores</td>
+                            <td><strong><?php echo implode(' | ',$professores);?></strong></td>
+                        </tr>
                     </tr>
                     </tbody>
 

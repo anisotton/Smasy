@@ -85,14 +85,7 @@ class Turmas extends SY_Controller {
     }
 
     public function matricular($codturma){
-        $this->load->model('modalidades_model','',TRUE);
-        $this->load->model('planospgto_model','',TRUE);
-        $this->load->model('formaspgto_model','',TRUE);
-        $this->load->model('contratos_model','',TRUE);
-
-        $this->layout['head']['scripts'][] = 'assets/js/select2.min.js';
-        $this->layout['head']['scripts'][] = 'assets/js/smasy/matricula.js';
-        $this->layout['head']['stylesheets'][] = 'assets/css/select2.css';
+        $this->viewMatricula();
 
         $this->data['turma'] = (array)$this->model->get($codturma);
         $filters['codturma'] = array('valor'=>$codturma);
@@ -114,6 +107,38 @@ class Turmas extends SY_Controller {
         $this->data['turma']['matriculados'] = $this->getAlunosMatric($codturma);
         $this->data['view'] = 'turmas/matricular';
         $this->load->view('layout/index',  $this->data);
+    }
+
+    private function viewMatricula(){
+        $this->load->model('modalidades_model','',TRUE);
+        $this->load->model('planospgto_model','',TRUE);
+        $this->load->model('formaspgto_model','',TRUE);
+        $this->load->model('contratos_model','',TRUE);
+
+        $this->layout['head']['scripts'][] = 'assets/js/select2.min.js';
+        $this->layout['head']['scripts'][] = 'assets/js/smasy/matricula.js';
+        $this->layout['head']['stylesheets'][] = 'assets/css/select2.css';
+    }
+
+    public function matricula($codturma, $ra){
+
+        $this->viewMatricula();
+
+        $this->data['turma'] = (array)$this->model->get($codturma);
+        $filters['codturma'] = array('valor'=>$codturma);
+        $this->data['compl'] = $this->turmascmpl_model->getByFilter($filters);
+        $this->data['modalidade'] = $this->modalidades_model->get($this->data['turma']['codmodalidade']);
+        $this->data['alunos'] = $this->model->getAlunosAptoMatric($this->data['turma']['codturma']);
+        $this->data['planospgto'] = $this->planospgto_model->getList();
+        $this->data['formaspgto'] = $this->formaspgto_model->getList();
+        $this->data['contratos'] = $this->contratos_model->getByFilter(array('tipo'=>array('valor'=>1)));
+
+
+
+
+        echo __FILE__." Linha:".__LINE__;
+        var_dump("<pre>",'sdf',"</prev>");
+        exit();
     }
 
     public function getAlunosMatric($codturma){

@@ -42,8 +42,9 @@ class Turmas_model extends SY_Model {
 
     public function get($key){
         return $this->db
-            ->select($this->table.'.*,sala.nome as sala')
+            ->select($this->table.'.*,sala.nome as sala, faixaetaria.nome as faixaetaria')
             ->join('smasy_sala as sala',$this->table.'.codsala = sala.id','inner')
+            ->join('smasy_faixaetaria as faixaetaria',$this->table.'.codfaixaetaria = faixaetaria.id','inner')
             ->where("{$this->table}.{$this->primaryKey}",$key)
             ->get($this->table)
             ->row();
@@ -61,15 +62,17 @@ class Turmas_model extends SY_Model {
         return $this->db
             ->select("smasy_aluno.*,
                       pessoaAluno.nome,
+                      YEAR(FROM_DAYS(DATEDIFF(CURRENT_DATE,pessoaAluno.dtnascimento))) as idade,
                       pessoaResp.telefone1,
                       pessoaResp.telefone2,
                       pessoaResp.email,
                       pessoaResp.nome AS responsavel")
             ->join('smasy_pessoa as pessoaAluno','smasy_aluno.codpessoa = pessoaAluno.codigo','inner')
             ->join('smasy_pessoa as pessoaResp','smasy_aluno.responsavel = pessoaResp.codigo','left')
-            ->where('pessoaAluno.dtnascimento <= ',$dataIni->format('Y-m-d'))
-            ->where('pessoaAluno.dtnascimento >= ',$dataFim->format('Y-m-d'))
+            ->where('YEAR(FROM_DAYS(DATEDIFF(CURRENT_DATE,pessoaAluno.dtnascimento))) >=',$faixa->idadeini)
+            ->where('YEAR(FROM_DAYS(DATEDIFF(CURRENT_DATE,pessoaAluno.dtnascimento))) <=',$faixa->idadefim)
             ->where("ra NOT IN(SELECT ra FROM smasy_matriculaaluno WHERE codturma = '{$turma->codturma}')")
+            ->order_by("pessoaAluno.nome")
             ->get('smasy_aluno')
             ->result();
     }

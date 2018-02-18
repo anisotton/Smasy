@@ -38,6 +38,10 @@ $CI =& get_instance();
                             <td>Professores</td>
                             <td><strong><?php echo implode(' | ',$professores);?></strong></td>
                         </tr>
+                        <tr>
+                            <td>Faixa etaria</td>
+                            <td><strong><?php echo $turma['faixaetaria'];?></strong></td>
+                        </tr>
                         </tr>
                         </tbody>
 

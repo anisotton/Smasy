@@ -13,13 +13,13 @@ class Matriculas extends SY_Controller {
 
     public function index()
     {
-        $this->data['view'] = 'matriculas/listar';
+        /*$this->data['view'] = 'matriculas/listar';
         $this->data['dados'] = $this->model->getList();
-        $this->load->view('layout/index',  $this->data);
+        $this->load->view('layout/index',  $this->data);*/
     }
 
     private function matricula(){
-        $this->data['view'] = 'matriculas/matricula';
+        $this->data['view'] = 'turmas/matricular';
 
         $this->load->view('layout/index', $this->data);
     }
