@@ -11,30 +11,37 @@
     <!--End-Action boxes-->
 <div class="row-fluid" style="margin-top: 0">
     <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title"><span class="icon"><i class="icon-signal"></i></span><h5>Produtos Com Estoque Mínimo</h5></div>
+        <div class="widget-box widget-calendar">
+            <div class="widget-title">
+                <span class="icon"><i class="fa fa-calendar"></i></span>
+                <h5>Turmas</h5>
+                <div class="buttons">
+                    <a id="add-event" data-toggle="modal" href="#modal-add-event" class="btn btn-inverse btn-mini">
+                        <i class="icon-plus icon-white"></i> Adicionar Evento
+                    </a>
+                </div>
+            </div>
             <div class="widget-content">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Produto</th>
-                        <th>Preço de Venda</th>
-                        <th>Estoque</th>
-                        <th>Estoque Mínimo</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php echo '<tr><td colspan="3">Nenhuma OS em aberto.</td></tr>'; ?>
-                    </tbody>
-                </table>
+                <div class="panel-left">
+                    <div id="calendar"></div>
+                </div>
+                <div id="external-events" class="panel-right">
+                    <div class="panel-title">
+                        <h5>Drag Events to the calander</h5>
+                    </div>
+                    <div class="panel-content">
+                        <div class="external-event ui-draggable label label-inverse">My Event 1</div>
+                        <div class="external-event ui-draggable label label-inverse">My Event 2</div>
+                        <div class="external-event ui-draggable label label-inverse">My Event 3</div>
+                        <div class="external-event ui-draggable label label-inverse">My Event 4</div>
+                        <div class="external-event ui-draggable label label-inverse">My Event 5</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="span12" style="margin-left: 0">
-
         <div class="widget-box">
             <div class="widget-title"><span class="icon"><i class="icon-signal"></i></span><h5>Ordens de Serviço Em Aberto</h5></div>
             <div class="widget-content">

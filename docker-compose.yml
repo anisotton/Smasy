@@ -1,0 +1,48 @@
+version: "3.8"
+services:
+    smasy:
+        build: 
+            args: 
+                user: smasy
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        image: smasy
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        depends_on: 
+            - db
+        networks: 
+            - net_smasy
+    nginx:
+        image: nginx:alpine
+        restart: unless-stopped
+        ports: 
+            - 80:80
+            - 443:443
+        volumes: 
+            - ./:/var/www
+            - ./docker/nginx/:/etc/nginx/conf.d/
+        depends_on: 
+            - db
+        networks: 
+            - net_smasy
+    db:
+        image: mysql:5.7.22
+        restart: unless-stopped
+        environment: 
+            MYSQL_DATABASE: smasy
+            MYSQL_ROOT_PASSWORD: pass_smasy            
+            MYSQL_USER: adm_smasy
+            MYSQL_PASSWORD: pass_smasy
+        volumes: 
+            - ./.docker/mysql/dbdata:/var/lib/mysql
+        ports: 
+            - 3306:3306
+        networks: 
+            - net_smasy
+networks: 
+    net_smasy:
+        driver: bridge

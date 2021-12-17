@@ -21,7 +21,7 @@ $CI =& get_instance();
                         </tr>
                         <tr>
                             <?php foreach($compl as $v){
-                                $professores[] = $v->prof;
+                                $professores[$v->codprof] = $v->prof;
                                 $dia[] = $v->dia;
                                 $codDia[] = $v->coddia;
                                 $hora[$v->hora] = $v->hora;
@@ -37,6 +37,10 @@ $CI =& get_instance();
                         <tr>
                             <td>Professores</td>
                             <td><strong><?php echo implode(' | ',$professores);?></strong></td>
+                        </tr>
+                        <tr>
+                            <td>Faixa etaria</td>
+                            <td><strong><?php echo $turma['faixaetaria'];?></strong></td>
                         </tr>
                         </tr>
                         </tbody>

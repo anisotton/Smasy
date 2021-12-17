@@ -6,6 +6,7 @@ class Turmas extends SY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('turmascmpl_model','',TRUE);
+        $this->load->model('turmasplanopgto_model','',TRUE);
         $this->load->model('turmas_model','',TRUE);
         $this->model = $this->turmas_model;
         $this->data['activeMenu'] = 'turmas';
@@ -32,12 +33,14 @@ class Turmas extends SY_Controller {
         $this->load->model('modalidades_model','',TRUE);
         $this->load->model('salas_model','',TRUE);
         $this->load->model('faixaetarias_model','',TRUE);
+        $this->load->model('coligadas_model','',TRUE);
 
         $this->data['view'] = 'turmas/turma';
 
         $this->layout['head']['scripts'][] = base_url().'assets/js/smasy/turmas.js';
         $this->layout['head']['stylesheets'][] = base_url().'assets/css/jquery-ui.min.css';
         $this->layout['head']['stylesheets'][] = base_url().'assets/css/jquery-ui.theme.min.css';
+        $this->data['coligadas'] = $this->coligadas_model->getList();
         $this->data['modalidades'] = $this->modalidades_model->getList();
         $this->data['faixaetarias'] = $this->faixaetarias_model->getList();
         $this->data['salas'] = $this->salas_model->getList();
@@ -49,6 +52,7 @@ class Turmas extends SY_Controller {
     {
         $this->data['dado']['id'] = '-1';
         $this->data['dado']['compl'] = array(array(0));
+        $this->data['dado']['planospgto'] = array(array(0));
         $this->turma();
 
     }
@@ -74,24 +78,20 @@ class Turmas extends SY_Controller {
 
         $filters['codturma'] = array('valor'=>$id);
         $this->data['dado']['compl'] = $this->turmascmpl_model->getByFilter($filters);
+
+        $filters['codturma'] = array('valor'=>$id);
+        $this->data['dado']['planospgto'] = $this->turmasplanopgto_model->getByFilter($filters);
         $this->turma();
     }
 
     public function matricular($codturma){
-        $this->load->model('modalidades_model','',TRUE);
-        $this->load->model('planospgto_model','',TRUE);
-        $this->load->model('formaspgto_model','',TRUE);
-        $this->load->model('contratos_model','',TRUE);
-
-        $this->layout['head']['scripts'][] = 'assets/js/select2.min.js';
-        $this->layout['head']['scripts'][] = 'assets/js/smasy/matricula.js';
-        $this->layout['head']['stylesheets'][] = 'assets/css/select2.css';
+        $this->viewMatricula();
 
         $this->data['turma'] = (array)$this->model->get($codturma);
         $filters['codturma'] = array('valor'=>$codturma);
         $this->data['compl'] = $this->turmascmpl_model->getByFilter($filters);
         $this->data['modalidade'] = $this->modalidades_model->get($this->data['turma']['codmodalidade']);
-        $this->data['alunos'] = $this->getAlunosAptoMatric($this->data['turma']['codturma']);
+        $this->data['alunos'] = $this->model->getAlunosAptoMatric($this->data['turma']['codturma']);
         $this->data['planospgto'] = $this->planospgto_model->getList();
         $this->data['formaspgto'] = $this->formaspgto_model->getList();
         $this->data['contratos'] = $this->contratos_model->getByFilter(array('tipo'=>array('valor'=>1)));
@@ -109,8 +109,36 @@ class Turmas extends SY_Controller {
         $this->load->view('layout/index',  $this->data);
     }
 
-    private function getAlunosAptoMatric($codturma){
-        return $this->model->getAlunosAptoMatric($codturma);
+    private function viewMatricula(){
+        $this->load->model('modalidades_model','',TRUE);
+        $this->load->model('planospgto_model','',TRUE);
+        $this->load->model('formaspgto_model','',TRUE);
+        $this->load->model('contratos_model','',TRUE);
+
+        $this->layout['head']['scripts'][] = 'assets/js/select2.min.js';
+        $this->layout['head']['scripts'][] = 'assets/js/smasy/matricula.js';
+        $this->layout['head']['stylesheets'][] = 'assets/css/select2.css';
+    }
+
+    public function matricula($codturma, $ra){
+
+        $this->viewMatricula();
+
+        $this->data['turma'] = (array)$this->model->get($codturma);
+        $filters['codturma'] = array('valor'=>$codturma);
+        $this->data['compl'] = $this->turmascmpl_model->getByFilter($filters);
+        $this->data['modalidade'] = $this->modalidades_model->get($this->data['turma']['codmodalidade']);
+        $this->data['alunos'] = $this->model->getAlunosAptoMatric($this->data['turma']['codturma']);
+        $this->data['planospgto'] = $this->planospgto_model->getList();
+        $this->data['formaspgto'] = $this->formaspgto_model->getList();
+        $this->data['contratos'] = $this->contratos_model->getByFilter(array('tipo'=>array('valor'=>1)));
+
+
+
+
+        echo __FILE__." Linha:".__LINE__;
+        var_dump("<pre>",'sdf',"</prev>");
+        exit();
     }
 
     public function getAlunosMatric($codturma){
@@ -121,13 +149,20 @@ class Turmas extends SY_Controller {
         $inicial = new DateTime($data);
         $final = new DateTime();
         $diasDif = $inicial->diff($final, true)->days;
-        $qtd = 0;
+
+        $semanas = ceil($diasDif / 7);
+        $qtd = (int)$semanas*count($dias);
+
         if(is_array($dias)){
             foreach ($dias as $dia){
-                $qtd += intval($diasDif / $dia) + ($inicial->format('N') + $diasDif % $dia >= $dia);
+                if($dia > $final->format('N')){
+                    $qtd--;
+                }
             }
         }else{
-            $qtd = intval($diasDif / 7) + ($inicial->format('N') + $diasDif % 7 >= 7);
+            if($dias > $final->format('N')){
+                $qtd--;
+            }
         }
 
         return $qtd;
@@ -147,7 +182,22 @@ class Turmas extends SY_Controller {
         }
 
         echo json_encode($dados);
+    }
 
+    public function buscaPlanoAutocomplete($nome){
+        $this->load->model('planospgto_model','',TRUE);
+        $dado = array();
+        $filters['nome'] = array('valor'=>$nome,'condicao'=>'like_after');
+        $result = $this->planospgto_model->getByFilter($filters);
+
+        foreach ($result as $v){
+            $dado['id'] = $v->id;
+            $dado['label'] = $v->nome;
+            $dado['value'] = $v->nome;
+            $dados[] = $dado;
+        }
+
+        echo json_encode($dados);
     }
 
     public function buscaHorarioAutocomplete($nome){
@@ -234,5 +284,42 @@ class Turmas extends SY_Controller {
         }else{
             $this->edit($this->data['dado']['id']);
         }
+    }
+
+
+    public function getTurmasCalendario(){
+        $this->load->library('DateTools');
+
+
+        $diasSemana = $this->datetools->GetYeardays('2017-05-01','2017-05-30');
+
+        $turmas = $this->model->getList();
+        $result = array();
+
+        foreach ($turmas as $turma){
+            $horarios = explode('|',$turma->horario);
+            $dias = explode('|', $turma->coddias);
+            foreach($dias as $key => $dia){
+                if(count($horarios)>1){
+                    $hora = explode(' as ', $horarios[$key]);
+                }else{
+                    $hora = explode(' as ', $horarios[0]);
+                }
+
+                foreach($diasSemana[$dia] as $d){
+                    $event['id'] = $turma->codturma;
+                    $event['title'] = $turma->modalidade.' - '.$turma->professor;
+                    $date = new DateTime("{$d}{$hora[0]}");
+                    $event['start'] = $date->format(DateTime::ATOM);
+                    $date = new DateTime("{$d}{$hora[1]}");
+                    $event['end'] = $date->format(DateTime::ATOM);
+                    $event['url'] = base_url().'turmas/visualizar/'.$turma->codturma;
+                    $result[] = $event;
+                }
+            }
+        }
+
+        echo json_encode($result);
+        exit();
     }
 }

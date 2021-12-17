@@ -1,5 +1,6 @@
 <?php
 $CI =& get_instance();
+
 ?>
 
 <div class="row-fluid">
@@ -18,29 +19,29 @@ $CI =& get_instance();
                 <table class="table table-bordered table-invoice">
                     <tbody>
                     <tr>
-                    <tr>
-                        <td class="span2">Sala</td>
-                        <td class="span10"><strong><?php echo $turma['sala'];?></strong></td>
-                    </tr>
-                    <tr>
-                        <?php foreach($compl as $v){
-                            $professores[] = $v->prof;
-                            $dia[] = $v->dia;
-                            $codDia[] = $v->coddia;
-                            $hora[$v->hora] = $v->hora;
-                        }
-                       ?>
-                        <td>Dias</td>
-                        <td><strong><?php echo implode(' | ',$dia);?></strong></td>
-                    </tr>
-                    <tr>
-                        <td>Horario</td>
-                        <td><strong><?php echo implode(' | ',$hora);?></strong></td>
-                    </tr>
-                    <tr>
-                        <td>Professores</td>
-                        <td><strong><?php echo implode(' | ',$professores);?></strong></td>
-                    </tr>
+                        <tr>
+                            <td class="span2">Sala</td>
+                            <td class="span10"><strong><?php echo $turma['sala'];?></strong></td>
+                        </tr>
+                        <tr>
+                            <?php foreach($compl as $v){
+                                $professores[$v->codprof] = $v->prof;
+                                $dia[] = $v->dia;
+                                $codDia[] = $v->coddia;
+                                $hora[$v->hora] = $v->hora;
+                            }
+                           ?>
+                            <td>Dias</td>
+                            <td><strong><?php echo implode(' | ',$dia);?></strong></td>
+                        </tr>
+                        <tr>
+                            <td>Horario</td>
+                            <td><strong><?php echo implode(' | ',$hora);?></strong></td>
+                        </tr>
+                        <tr>
+                            <td>Professores</td>
+                            <td><strong><?php echo implode(' | ',$professores);?></strong></td>
+                        </tr>
                     </tr>
                     </tbody>
 
@@ -82,22 +83,28 @@ $CI =& get_instance();
                         <th>Telefones</th>
                         <th>Responsavel</th>
                         <th>Vencimento matricula</th>
+                        <th>#</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <?php if($turma['matriculados']['total'] > 0):?>
+                    <?php if($turma['matriculados']['total'] > 0):
+                        $dataAtual = new DateTime();?>
                         <?php foreach ($turma['matriculados']['alunos'] as $aluno):
                             $telefones = array();
                             $telefones[] = $aluno->telefone1;
                             $telefones[] = $aluno->telefone2;
                             $telefones[] = $aluno->telefone3;
+
+                            $data = new DateTime($aluno->dtvencimento);
+                            $matricVenc = ($dataAtual->getTimestamp() > $data->getTimestamp())?true:false;
                             ?>
                             <tr>
                                 <td><?php echo $aluno->ra?></td>
                                 <td><?php echo $aluno->nome?></td>
                                 <td><?php echo implode(' | ',array_filter($telefones))?></td>
                                 <td><?php echo $aluno->responsavel?></td>
-                                <td><?php $data = new DateTime($aluno->dtvencimento); echo $data->format('d/m/Y')?></td>
+                                <td<?php echo ($matricVenc)?' style="color: red;font-weight: bold;"':'';?>><?php echo $data->format('d/m/Y')?></td>
+                                <td></td>
                             </tr>
                         <?php endforeach;?>
                     <?php else:?>

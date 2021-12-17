@@ -38,12 +38,16 @@ class Alunos extends SY_controller {
             $isnew = true;
         }
         $this->data['aluno']['dtnascimento'] = implode('-',array_reverse(explode('/',$this->data['aluno']['dtnascimento'])));
+        $this->data['aluno']['dtemissaoident'] = implode('-',array_reverse(explode('/',$this->data['aluno']['dtemissaoident'])));
         $dtnascimento = new DateTime($this->data['aluno']['dtnascimento']);
+
+
         $now = new DateTime('today');
         $idade = $dtnascimento->diff($now)->y;
         $aluno['responsavel'] = $this->data['aluno']['id_responsavel'];
         unset($this->data['aluno']['id_responsavel']);
         unset($this->data['aluno']['responsavel']);
+        unset($this->data['aluno']['naturalidade_desc']);
 
         $validation = 'alunoMenor';
         if($idade >= 18){
@@ -89,6 +93,7 @@ class Alunos extends SY_controller {
 
     public function edit($id)
     {
+        $this->layout['head']['scripts'][] = base_url().'assets/js/smasy/pessoas.js';
         $this->layout['head']['scripts'][] = base_url().'assets/js/smasy/alunos.js';
 
         $this->data['aluno'] = (array)$this->alunos_model->get($id);
@@ -105,9 +110,12 @@ class Alunos extends SY_controller {
             $this->data['aluno']['responsavel'] = $this->data['aluno']['responsavel']->nome;
         }
         $this->data['aluno']['dtnascimento'] = implode('/',array_reverse(explode('-',$this->data['aluno']['dtnascimento'])));
+        $this->data['aluno']['dtemissaoident'] = implode('/',array_reverse(explode('-',$this->data['aluno']['dtemissaoident'])));
 
+        $naturalidade = $this->smasy_model->getCidade($this->data['aluno']['naturalidade']);
+
+        $this->data['aluno']['naturalidade_desc'] = $naturalidade->nome;
         $this->data['estados'] = $this->smasy_model->getEstados();
-        $this->data['naturalidade'] = $this->smasy_model->getCidades($this->data['aluno']['estadonatal']);
         $this->data['cidades'] = $this->smasy_model->getCidades($this->data['aluno']['estado']);
 
         $this->data['view'] = 'alunos/aluno';

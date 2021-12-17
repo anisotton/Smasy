@@ -37,7 +37,7 @@ $config = array(
                 ),
                 'logout' => array(
                     'label' => 'Sair',
-                    'href' => base_url().'smasy/logout',
+                    'href' => base_url().'auth/logout',
                     'icon' => 'fa-sign-out',
                 ),
         ),
@@ -47,6 +47,37 @@ $config = array(
             'label' => 'Painel',
             'href' => base_url(),
             'icon' => 'fa-home',
+        ),
+        'params' => array(
+            'label' => 'Parametros',
+            'href' => base_url().'params',
+            'icon' => 'fa-cog',
+            'submenu' => array(
+                'painel' => array(
+                    'label' => 'Painel',
+                    'href' => base_url().'params',
+                ),
+                'coligadas' => array(
+                    'label' => 'Coligadas',
+                    'href' => base_url().'coligadas',
+                ),
+                'horarios' => array(
+                    'label' => 'Horarios',
+                    'href' => base_url().'horarios',
+                ),
+                'faixaetaria' => array(
+                    'label' => 'Faixa etaria',
+                    'href' => base_url().'faixaetarias',
+                ),
+                'salas' => array(
+                    'label' => 'Salas',
+                    'href' => base_url().'salas',
+                ),
+                'modalidades' => array(
+                    'label' => 'Modalidades',
+                    'href' => base_url().'modalidades',
+                ),
+            ),
         ),
         'pessoas' => array(
             'label' => 'Pessoas',
@@ -67,28 +98,6 @@ $config = array(
             'label' => 'Turmas',
             'href' => base_url().'turmas',
             'icon' => 'fa-book',
-            'submenu' => array(
-                'turmas' => array(
-                    'label' => 'Turmas',
-                    'href' => base_url().'turmas',
-                ),
-                'modalidades' => array(
-                    'label' => 'Modalidades',
-                    'href' => base_url().'modalidades',
-                ),
-                'horarios' => array(
-                    'label' => 'Horarios',
-                    'href' => base_url().'horarios',
-                ),
-                'faixaetaria' => array(
-                    'label' => 'Faixa etaria',
-                    'href' => base_url().'faixaetarias',
-                ),
-                'salas' => array(
-                    'label' => 'Salas',
-                    'href' => base_url().'salas',
-                ),
-            ),
         ),
         'financeiro' => array(
             'label' => 'Financeiro',

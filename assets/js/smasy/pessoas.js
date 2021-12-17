@@ -1,20 +1,47 @@
 jQuery(document).ready(function () {
-
-    jQuery('#estadonatal').on('change',function () {
+    jQuery('#estado').on('change',function () {
         var value = jQuery(this).val();
-        jQuery('#naturalidade').html('').append(jQuery('<option>').val('').html('Selecione uma opção'));
+        jQuery('#cidade').html('').append(jQuery('<option>').val('').html('Selecione uma opção'));
         jQuery.ajax( {
             url: smasy.getBase()+"smasy/getCidadesAjax/"+value,
             dataType: "json",
             success: function( data ) {
                 jQuery(data).each(function () {
-                    jQuery('#naturalidade').append(jQuery('<option>').val(this.value).html(this.nome));
+                    console.log(this);
+                    jQuery('#cidade').append(jQuery('<option>').val(this.id).html(this.label));
                 });
             }
-        });
-
-
+        } );
     });
+    jQuery(".estadoAjax").on('change keyup',function () {
+        jQuery('.cidadeAjax').val('');
+        jQuery(jQuery('.cidadeAjax').attr('data-input-value')).val('');
+    });
+
+    jQuery(".cidadeAjax").on('change keyup',function () {
+        if(jQuery(this).val().length<3){
+            return false;
+        }
+        var estado = jQuery(jQuery(this).attr('data-input-estado')).val();
+        var input_value =  jQuery(this).attr('data-input-value');
+        jQuery(this).autocomplete({
+            source: function(request, response) {
+                jQuery.ajax( {
+                    url: smasy.getBase()+"smasy/getCidadesAjax/"+estado+'/'+request.term,
+                    dataType: "json",
+                    success: function( data ) {
+                        response( data );
+                    }
+                 });
+            },
+            minLength: 3,
+            select: function( event, ui ) {
+                console.log(input_value);
+                jQuery(input_value).val(ui.item.id);
+            }
+        });
+    });
+
 
     jQuery('#cep').on('change keyup',function () {
         var value = jQuery(this).val().replace(/[^0-9]/g,'');
@@ -43,18 +70,6 @@ jQuery(document).ready(function () {
         } );
     });
 
-    jQuery('#estado').on('change',function () {
-        var value = jQuery(this).val();
-        jQuery('#cidade').html('').append(jQuery('<option>').val('').html('Selecione uma opção'));
-        jQuery.ajax( {
-            url: smasy.getBase()+"smasy/getCidadesAjax/"+value,
-            dataType: "json",
-            success: function( data ) {
-                jQuery(data).each(function () {
-                    jQuery('#cidade').append(jQuery('<option>').val(this.value).html(this.nome));
-                });
-            }
-        } );
-    });
+
 
 });

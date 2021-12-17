@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/matrix-media.css" />
 <link href="<?php echo base_url()?>assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/jquery.gritter.css" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<link href="<?php echo base_url()?>assets/css/Open_Sans 400,700,800.css" rel='stylesheet' type='text/css'>
 <?php foreach ($this->layout['head']['stylesheets'] as $stylesheet):
     if(strpos($stylesheet,'http') !== false){
         $url = $stylesheet;
@@ -23,7 +23,7 @@
 <link rel="stylesheet" type='text/css' href="<?php echo $url?>" />
 <?php endforeach;?>
 <script type="application/javascript" src="<?php echo base_url()?>assets/js/jquery.min.js"></script>
-<script type="application/javascript" src="<?php echo base_url()?>assets/js/jquery.ui.custom.js"></script>
+<script type="application/javascript" src="<?php echo base_url()?>assets/js/jquery-ui.min.js"></script>
 <script type="application/javascript" src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
 <script type="application/javascript" src="<?php echo base_url()?>assets/js/jquery.gritter.min.js"></script>
 <script type="application/javascript" src="<?php echo base_url()?>assets/js/jquery.validate.js"></script>
