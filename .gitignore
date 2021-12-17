@@ -21,6 +21,10 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /nbproject/
 .idea/*
 
+# Docker volumes
+#-------------------------
+.docker/*
+
 ## Sublime Text cache files
 *.tmlanguage.cache
 *.tmPreferences.cache
